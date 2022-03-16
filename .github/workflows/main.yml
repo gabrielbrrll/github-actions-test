@@ -29,7 +29,7 @@ jobs:
             then
               full_report=""
               limit=3
-              jq -c '.results[].suites[]' index.json | while [read -r i] || [$limit -ne 0]; do
+              jq -c '.results[].suites[]' index.json | while read -r i [$limit -ne 0]; do
                 ((limit--))
                 title=$(echo "$i" | jq '.tests[].title')
                 file=$(echo "$i" | jq '.fullFile')
