@@ -64,8 +64,6 @@ jobs:
                 🧪 TEST: "User can delete a LO (example #1)"
                 "User can delete a LO (example #2)"
                 "User can not delete a LO" | 📂 FILE: "cypress/integration/cms/LO_delete.feature" | 🔴 MESSAGE: "AssertionError: Timed out retrying after 20000ms: Expected to find element: `[role='alert'][data-testid='SnackbarBase__content']`, but never found it."
-                null
-                null
                 🧪 TEST: "User can navigate to a valid page in the pdf document"
                 "User cannot navigate to an invalid page of the pdf document"
                 "User cannot go to previous page when it is first page of the pdf document"
