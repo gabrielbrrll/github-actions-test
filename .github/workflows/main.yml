@@ -18,12 +18,25 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       bar: ${{ steps.set-variables.outputs.foo }}
+      failures: ${{ steps.set-variables.outputs.failures_count }}
     
     steps:
       - name: Set variables
         id: set-variables
         run: |
-          echo "::set-output name=foo::gabriel"
+          if [ -f "index.json" ] 
+              then
+                  jq -c '.results[].suites[]' index.json | while read i; do
+                      title=$(echo "$i" | jq '.tests[].title')
+                      file=$(echo "$i" | jq '.fullFile')
+                      message=$(echo "$i" | jq '.tests[].err.message')
+                      report=$(echo "🧪 TEST: $title | 📂 FILE: $file | 🔴 MESSAGE: $message")
+                      echo "::set-output name=fail_report::"${report}""
+                  done
+
+                  failures=`cat index.json | jq ".stats.failures"`
+                  echo "::set-output name=failures_count::$failures"
+              fi
         
   log_variable:
     needs:
@@ -35,6 +48,7 @@ jobs:
         id: log-variable
         run: |
           echo "${{ needs.set-variable.outputs.bar }}"
+          echo "${{ needs.set-variable.outputs.failures }}"
         
     
     
