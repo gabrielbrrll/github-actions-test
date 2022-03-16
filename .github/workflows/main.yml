@@ -46,7 +46,7 @@ jobs:
       - name: Log variable
         id: log-variable
         run: |
-          echo "WAIT
+          echo "WAIT"
         
     
     
