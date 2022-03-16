@@ -45,13 +45,12 @@ jobs:
       - name: Log variable
         id: log-variable
         run: |
-          echo "WTHHTHTHTHTHHTTHTHHHTHTH!"
           MY_STRING=$(cat << EOF
-            ${{ steps.set-variable.outputs.fail_report }}
+            "${{ steps.set-variable.outputs.fail_report }}"
           EOF
           )
           
-          echo "$MY_STRING"
+          echo "This is my string: $MY_STRING"
         
     
     
