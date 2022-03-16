@@ -25,17 +25,18 @@ jobs:
       - name: Set variable
         id: set-variable
         run: |
+          fail=""
           if [ -f "index.json" ] 
             then
               jq -c '.results[].suites[]' index.json | while read -r i; do
                   title=$(echo "$i" | jq '.tests[].title')
                   file=$(echo "$i" | jq '.fullFile')
                   message=$(echo "$i" | jq '.tests[].err.message')
-                  echo "🧪 TEST: $title | 📂 FILE: $file | 🔴 MESSAGE: $message"
+                  fail+=$(echo "🧪 TEST: $title | 📂 FILE: $file | 🔴 MESSAGE: $message")
                   
-              done < report
+              done
               
-              echo "$report"
+              echo "$fail"
 
               failures=`cat index.json | jq ".stats.failures"`
 
