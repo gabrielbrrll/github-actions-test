@@ -27,16 +27,15 @@ jobs:
         run: |
           if [ -f "index.json" ] 
             then
-              fail=jq -c '.results[].suites[]' index.json | while read i; do
+              jq -c '.results[].suites[]' index.json | while read -r i; do
                   title=$(echo "$i" | jq '.tests[].title')
                   file=$(echo "$i" | jq '.fullFile')
                   message=$(echo "$i" | jq '.tests[].err.message')
-                  report=$(echo "🧪 TEST: $title | 📂 FILE: $file | 🔴 MESSAGE: $message")
+                  echo "🧪 TEST: $title | 📂 FILE: $file | 🔴 MESSAGE: $message"
                   
-              done
+              done < report
               
-              echo "::set-output name=fail_report::"${fail}""
-              echo "$fail"
+              echo "$report"
 
               failures=`cat index.json | jq ".stats.failures"`
 
