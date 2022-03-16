@@ -28,13 +28,19 @@ jobs:
           if [ -f "index.json" ] 
             then
               full_report=""
+              limit = 3
               jq -c '.results[].suites[]' index.json | while read -r i; do
-                  title=$(echo "$i" | jq '.tests[].title')
-                  file=$(echo "$i" | jq '.fullFile')
-                  message=$(echo "$i" | jq '.tests[].err.message')
-                  report=$(echo "🧪 TEST: $title \n 📂 FILE: $file \n 🔴 MESSAGE: $message \n")
-                  full_report+="$report \n"
-                  echo "::set-output name=fail_report::"${full_report}""
+                  if [limit != 0]
+                    title=$(echo "$i" | jq '.tests[].title')
+                    file=$(echo "$i" | jq '.fullFile')
+                    message=$(echo "$i" | jq '.tests[].err.message')
+                    report=$(echo "🧪 TEST: $title \n 📂 FILE: $file \n 🔴 MESSAGE: $message \n")
+                    full_report+="$report \n"
+                    echo "::set-output name=fail_report::"${full_report}""
+                    limit -= 1
+                  else
+                    full_report+="..."
+                    done
               done
             else
               echo "No failed"
