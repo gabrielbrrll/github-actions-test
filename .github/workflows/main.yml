@@ -32,7 +32,7 @@ jobs:
                   title=$(echo "$i" | jq '.tests[].title')
                   file=$(echo "$i" | jq '.fullFile')
                   message=$(echo "$i" | jq '.tests[].err.message')
-                  report=$(echo "🧪 TEST: $title | 📂 FILE: $file | 🔴 MESSAGE: $message")
+                  report=$(echo -e "🧪 TEST: $title | 📂 FILE: $file | 🔴 MESSAGE: $message \n")
                   full_report+="$report"
                   echo "FULL REPORT: $full_report"
                   echo "::set-output name=fail_report::"${full_report}""
@@ -48,11 +48,6 @@ jobs:
           MY_STRING=$(cat << EOF
             "${{ steps.set-variable.outputs.fail_report }}"
           EOF
-          
-          MY_STRING="${MY_STRING//'%'/'%25'}"
-          MY_STRING="${MY_STRING//$'\n'/'%0A'}"
-          MY_STRING="${MY_STRING//$'\r'/'%0D'}"
-          )
           
           echo "This is my string: $MY_STRING"
         
