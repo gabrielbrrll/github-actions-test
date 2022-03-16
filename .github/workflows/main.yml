@@ -48,7 +48,7 @@ jobs:
           echo "WTHHTHTHTHTHHTTHTHHHTHTH!"
         
           full_report="${{ steps.set-variable.outputs.fail_report }}"
-          echo "$full_report"
+          echo "$full_report" | 's/[()&:\/]/\\&/g'
         
     
     
