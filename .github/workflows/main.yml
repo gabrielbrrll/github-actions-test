@@ -49,7 +49,7 @@ jobs:
         run: |
           echo "${{ steps.set-variable.outputs.failures_count }}"
           cat <<'EOF'
-            echo "${{ steps.set-variable.outputs.fail_report }}"
+            ${{ steps.set-variable.outputs.fail_report }}
           EOF
         
     
