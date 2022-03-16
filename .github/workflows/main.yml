@@ -46,10 +46,8 @@ jobs:
         id: log-variable
         run: |
           echo "WTHHTHTHTHTHHTTHTHHHTHTH!"
-        
-          full_report="${{ steps.set-variable.outputs.fail_report }}"
           MY_STRING=$(cat << EOF
-            $full_report
+            ${{ steps.set-variable.outputs.fail_report }}
           EOF
           )
           
