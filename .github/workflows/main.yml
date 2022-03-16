@@ -14,7 +14,8 @@ jobs:
 
       - name: Another greeting
         run: echo "Hello, world!"
-  set-variable:
+   
+  log-variable:
     runs-on: ubuntu-latest
     outputs:
       bar: ${{ steps.set-variables.outputs.foo }}
@@ -22,10 +23,11 @@ jobs:
       report: ${{ steps.set-variables.outputs.fail_report }}
     
     steps:
-      - uses: actions/checkout@v2
     
+      - uses: actions/checkout@v2
+      
       - name: Set variables
-        id: set-variables
+        id: set-variable
         run: |
           if [ -f "index.json" ] 
             then
@@ -45,20 +47,12 @@ jobs:
               echo "No failed"
           fi
         
-  log_variable:
-    needs:
-      - set-variable
-    runs-on: ubuntu-latest
-    
-    steps:
-    
-      - uses: actions/checkout@v2
       
       - name: Log variable
         id: log-variable
         run: |
-          echo "${{ needs.set-variable.outputs.failures }}"
-          echo "${{ needs.set-variable.outputs.report }}"
+          echo "${{ steps.set-variable.outputs.failures }}"
+          echo "${{ steps.set-variable.outputs.report }}"
         
     
     
