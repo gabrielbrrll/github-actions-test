@@ -46,11 +46,11 @@ jobs:
         id: log-variable
         run: |
           full_report=$(cat << EOF
-            "${{ steps.set-variable.outputs.fail_report }}"
+            ${{ steps.set-variable.outputs.fail_report }}
           EOF
           )
 
           full_report=${full_report//$'\n'/'%0A'}
         
-          echo -e "$full_report"
+          echo "$full_report"
       
