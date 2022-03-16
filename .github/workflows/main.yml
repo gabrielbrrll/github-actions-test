@@ -28,7 +28,7 @@ jobs:
           if [ -f "index.json" ] 
             then
               full_report=""
-              jq -c '.results[].suites[]' index.json | while read -r i; do
+              jq -c '.results[].suites[]' index.json | while read i; do
                   title=$(echo "$i" | jq '.tests[].title')
                   file=$(echo "$i" | jq '.fullFile')
                   message=$(echo "$i" | jq '.tests[].err.message')
@@ -49,6 +49,10 @@ jobs:
             "${{ steps.set-variable.outputs.fail_report }}"
           EOF
           )
+          
+          MY_STRING="${MY_STRING//'%'/'%25'}"
+          MY_STRING="${MY_STRING//$'\n'/'%0A'}"
+          MY_STRING="${MY_STRING//$'\r'/'%0D'}"
           
           echo -e "This is my string: $MY_STRING"
         
