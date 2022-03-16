@@ -47,8 +47,10 @@ jobs:
         run: |
           echo "WTHHTHTHTHTHHTTHTHHHTHTH!"
         
-          full_report="${{ steps.set-variable.outputs.fail_report }}" | sed -e 's/[()&:\|/]/\\&/g')"
-          echo "$full_report"
+          full_report="${{ steps.set-variable.outputs.fail_report }}"
+          full_report_string="$(echo "$full_report" | sed -e 's/[()&:/|\]/\\&/g')"
+          
+          echo "$full_report_string"
         
     
     
