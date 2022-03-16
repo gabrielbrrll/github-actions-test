@@ -21,6 +21,8 @@ jobs:
       failures: ${{ steps.set-variables.outputs.failures_count }}
     
     steps:
+      - uses: actions/checkout@v2
+    
       - name: Set variables
         id: set-variables
         run: |
