@@ -58,4 +58,16 @@ jobs:
           full_report=${full_report//$'\n'/'%0A'}
 
           echo -e "$full_report"
-      
+          
+      - name: Post fail reports
+        id: post-fail-reports
+        uses: slackapi/slack-github-action@v1.18.0
+        with:
+          payload: |
+            {
+              "key": "value",
+              "foo": "bar"
+            }
+        env:
+         SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/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'
+
