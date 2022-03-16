@@ -33,8 +33,7 @@ jobs:
                   file=$(echo "$i" | jq '.fullFile')
                   message=$(echo "$i" | jq '.tests[].err.message')
                   report=$(echo -e "🧪 TEST: $title \n 📂 FILE: $file \n 🔴 MESSAGE: $message \n")
-                  full_report+="$report \n"
-                  echo "FULL REPORT: $full_report"
+                  full_report+="$report /n"
                   echo "::set-output name=fail_report::"${full_report}""
               done
             else
@@ -54,5 +53,5 @@ jobs:
           full_report="${full_report//$'\n'/'%0A'}"
           full_report="${full_report//$'\r'/'%0D'}"
         
-          echo "$full_report"
+          echo -e "$full_report"
       
