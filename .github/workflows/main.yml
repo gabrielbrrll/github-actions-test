@@ -25,22 +25,19 @@ jobs:
       - name: Set variable
         id: set-variable
         run: |
-          fail=""
           if [ -f "index.json" ] 
+            some_string=""
             then
               jq -c '.results[].suites[]' index.json | while read -r i; do
                   title=$(echo "$i" | jq '.tests[].title')
                   file=$(echo "$i" | jq '.fullFile')
                   message=$(echo "$i" | jq '.tests[].err.message')
-                  fail+=$(echo "🧪 TEST: $title | 📂 FILE: $file | 🔴 MESSAGE: $message")
+                  report=$(echo "🧪 TEST: $title | 📂 FILE: $file | 🔴 MESSAGE: $message")
+                  some_string+="$report"
                   
               done
               
-              echo "$fail"
-
-              failures=`cat index.json | jq ".stats.failures"`
-
-              echo "::set-output name=failures_count::"${failures}""
+              echo "$some_string"
             else
               echo "No failed"
           fi
@@ -49,8 +46,7 @@ jobs:
       - name: Log variable
         id: log-variable
         run: |
-          echo "${{ steps.set-variable.outputs.failures_count }}"
-          echo "${{ steps.set-variable.outputs.fail_report }}"
+          echo "WAIT
         
     
     
