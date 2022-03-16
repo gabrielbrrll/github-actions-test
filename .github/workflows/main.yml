@@ -48,7 +48,7 @@ jobs:
         id: log-variable
         run: |
           echo "${{ steps.set-variable.outputs.failures_count }}"
-          echo "🧪 TEST: "User can duplicate a book" | 📂 FILE: "cypress/integration/cms/book_duplicate.feature""
+          echo "🧪 TEST: "User can duplicate a book" | 📂 FILE: "cypress/integration/cms/book_duplicate.feature" | 🔴 MESSAGE: "CypressError: sync skip;"
         
     
     
