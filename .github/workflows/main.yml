@@ -33,6 +33,7 @@ jobs:
                   message=$(echo "$i" | jq '.tests[].err.message')
                   report=$(echo "🧪 TEST: $title | 📂 FILE: $file | 🔴 MESSAGE: $message")
               done
+              echo "TESTTT!"
               echo "$report"
             else
               echo "No failed"
