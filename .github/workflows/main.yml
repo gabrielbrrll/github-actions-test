@@ -47,8 +47,8 @@ jobs:
         run: |
           echo "WTHHTHTHTHTHHTTHTHHHTHTH!"
         
-          full_report="TEST "User duplicate a book" FILE "cypress/integration/cms/book_duplicate.feature" MESSAGE "CypressError: sync skip; aborting execution""
-          echo "$full_report"
+          full_report='TEST User duplicate a book FILE cypress/integration/cms/book_duplicate.feature" MESSAGE "CypressError: sync skip; aborting execution"'
+          echo '$full_report'
         
     
     
