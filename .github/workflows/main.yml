@@ -28,8 +28,8 @@ jobs:
           if [ -f "index.json" ] 
             then
               full_report=""
-              declare -i limit=3
-              jq -c '.results[].suites[]' index.json | while read -r i [$limit -ne 0]; do
+              limit=3
+              jq -c '.results[].suites[]' index.json | while read -r i && [[ "$limit" != 0 ]]; do
                 ((limit--))
                 title=$(echo "$i" | jq '.tests[].title')
                 file=$(echo "$i" | jq '.fullFile')
