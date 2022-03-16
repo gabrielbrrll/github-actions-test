@@ -50,7 +50,7 @@ jobs:
           EOF
           )
           
-          echo "This is my string: $MY_STRING"
+          echo -e "This is my string: $MY_STRING"
         
     
     
