@@ -33,7 +33,7 @@ jobs:
                   file=$(echo "$i" | jq '.fullFile')
                   message=$(echo "$i" | jq '.tests[].err.message')
                   report="🧪 TEST: $title | 📂 FILE: $file | 🔴 MESSAGE: $message"
-                  echo "$report"
+                  echo "++++++++++++++++++++++++++ $report"
               done
               echo "TESTTT!"
               echo "$report"
