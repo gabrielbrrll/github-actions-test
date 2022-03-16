@@ -39,7 +39,6 @@ jobs:
                 if [$limit == 0]
                   then
                     full_report+="..."
-                  done
                 echo "::set-output name=fail_report::"${full_report}""
               done
             else
