@@ -45,7 +45,7 @@ jobs:
       - name: Log variable
         id: log-variable
         run: |
-          full_report=${{ steps.set-variable.outputs.fail_report }}
+          full_report="${{ steps.set-variable.outputs.fail_report }}"
           echo `WTHHTHTHTHTHHTTHTHHHTHTH!`
         
     
