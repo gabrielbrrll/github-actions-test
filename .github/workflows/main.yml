@@ -24,23 +24,17 @@ jobs:
       - name: Set variables
         id: set-variables
         run: |
-          cd ./
-          if [ -f "index.json" ] 
-          then
-              jq -c '.results[].suites[]' index.json | while read i; do
-                  title=$(echo "$i" | jq '.tests[].title')
-                  file=$(echo "$i" | jq '.fullFile')
-                  message=$(echo "$i" | jq '.tests[].err.message')
-                  report=$(echo "🧪 TEST: $title | 📂 FILE: $file | 🔴 MESSAGE: $message")
-                  echo "::set-output name=fail_report::"${report}""
-                  echo $report
-              done
+          jq -c '.results[].suites[]' index.json | while read i; do
+              title=$(echo "$i" | jq '.tests[].title')
+              file=$(echo "$i" | jq '.fullFile')
+              message=$(echo "$i" | jq '.tests[].err.message')
+              report=$(echo "🧪 TEST: $title | 📂 FILE: $file | 🔴 MESSAGE: $message")
+              echo "::set-output name=fail_report::"${report}""
+              echo $report
+          done
 
-              failures=`cat index.json | jq ".stats.failures"`
-              echo "::set-output name=failures_count::$failures"
-          else
-            echo "NOPE"
-          fi
+          failures=`cat index.json | jq ".stats.failures"`
+          echo "::set-output name=failures_count::$failures"
         
   log_variable:
     needs:
