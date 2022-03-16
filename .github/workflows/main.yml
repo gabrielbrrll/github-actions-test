@@ -12,9 +12,6 @@ jobs:
       - name: Greeting
         run: echo "Hello, world!"
 
-      - name: Simulate an error
-        run: echo "About to fail" ; exit 1
-
       - name: Another greeting
         run: echo "Hello, world!"
   set-variable:
@@ -37,7 +34,7 @@ jobs:
       - name: Log variable
         id: log-variable
         run: |
-          echo ${{ needs.set-variable.outputs.bar }}
+          echo "${{ needs.set-variable.outputs.bar }}"
         
     
     
