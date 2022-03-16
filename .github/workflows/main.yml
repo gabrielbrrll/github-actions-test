@@ -27,16 +27,16 @@ jobs:
         run: |
           if [ -f "index.json" ] 
             then
-              some_string="SOME STRING"
+              full_report=""
               jq -c '.results[].suites[]' index.json | while read -r i; do
                   title=$(echo "$i" | jq '.tests[].title')
                   file=$(echo "$i" | jq '.fullFile')
                   message=$(echo "$i" | jq '.tests[].err.message')
                   report="🧪 TEST: $title | 📂 FILE: $file | 🔴 MESSAGE: $message"
-                  some_string+="$report"
-                  echo "$some_string"
+                  full_report+="$report"
+                  echo "$full_report"
               done
-              echo "++++++++++++++++++++++++++ $some_string"
+              echo "FULL REPORT: $full_report"
             else
               echo "No failed"
           fi
