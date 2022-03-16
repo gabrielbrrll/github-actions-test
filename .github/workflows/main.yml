@@ -26,15 +26,18 @@ jobs:
         id: set-variable
         run: |
           if [ -f "index.json" ] 
+            some_string=""
             then
               jq -c '.results[].suites[]' index.json | while read -r i; do
                   title=$(echo "$i" | jq '.tests[].title')
                   file=$(echo "$i" | jq '.fullFile')
                   message=$(echo "$i" | jq '.tests[].err.message')
                   report=$(echo "🧪 TEST: $title | 📂 FILE: $file | 🔴 MESSAGE: $message")
+                  some_string="$report"
               done
               echo "TESTTT!"
               echo "$report"
+              echo "$some_string"
             else
               echo "No failed"
           fi
