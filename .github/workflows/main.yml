@@ -17,16 +17,12 @@ jobs:
    
   log-variable:
     runs-on: ubuntu-latest
-    outputs:
-      bar: ${{ steps.set-variables.outputs.foo }}
-      failures: ${{ steps.set-variables.outputs.failures_count }}
-      report: ${{ steps.set-variables.outputs.fail_report }}
     
     steps:
     
       - uses: actions/checkout@v2
       
-      - name: Set variables
+      - name: Set variable
         id: set-variable
         run: |
           if [ -f "index.json" ] 
@@ -51,8 +47,8 @@ jobs:
       - name: Log variable
         id: log-variable
         run: |
-          echo "${{ steps.set-variable.outputs.failures }}"
-          echo "${{ steps.set-variable.outputs.report }}"
+          echo "${{ steps.set-variable.outputs.failures_count }}"
+          echo "${{ steps.set-variable.outputs.fail_report }}"
         
     
     
