@@ -41,7 +41,6 @@ jobs:
                     limit -= 1
                   else
                     full_report+="..."
-                    done
               done
             else
               echo "No failed"
