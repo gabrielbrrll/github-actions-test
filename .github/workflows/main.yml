@@ -57,7 +57,7 @@ jobs:
         id: log-variable
         run: |
           echo "${needs.set-variable.outputs.failures}"
-          echo "{$needs.set-variable.outputs.report}"
+          echo "${needs.set-variable.outputs.report}"
         
     
     
