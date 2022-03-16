@@ -50,8 +50,7 @@ jobs:
           EOF
           )
 
-          
-          full_report="${full_report//$'\n'/'%0A'}"
+          full_report=${full_report//$'\n'/'%0A'}
         
           echo -e "$full_report"
       
