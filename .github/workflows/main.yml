@@ -60,7 +60,7 @@ jobs:
           echo -e "$full_report"
           
       - name: Post fail reports
-        id: post-fail-reports
+        id: post-fail-reportss
         uses: 8398a7/action-slack@v3
         with:
           status: ${{ job.status }}
