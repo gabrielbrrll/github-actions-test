@@ -31,6 +31,7 @@ jobs:
               limit = 3
               jq -c '.results[].suites[]' index.json | while read -r i; do
                   if [limit != 0]
+                  then
                     title=$(echo "$i" | jq '.tests[].title')
                     file=$(echo "$i" | jq '.fullFile')
                     message=$(echo "$i" | jq '.tests[].err.message')
