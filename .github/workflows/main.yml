@@ -29,6 +29,7 @@ jobs:
             then
               full_report=""
               limit=3
+              failures=`cat index.json | jq ".stats.failures"`
               jq -c '.results[].suites[]' index.json | while read -r i && [[ "$limit" != 0 ]]; do
                 ((limit--))
                 title=$(echo "$i" | jq '.tests[].title')
@@ -37,7 +38,7 @@ jobs:
                 report=$(echo "🧪 TEST: $title \n 📂 FILE: $file \n 🔴 MESSAGE: $message \n")
                 full_report+="$report \n"
                 if [[ $limit == 0 ]]; then
-                    full_report+="..."
+                    full_report+="...showing 3 of ${failures} test fails"
                 fi
                 echo "::set-output name=fail_report::"${full_report}""
               done
