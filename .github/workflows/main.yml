@@ -36,9 +36,6 @@ jobs:
                 message=$(echo "$i" | jq '.tests[].err.message')
                 report=$(echo "🧪 TEST: $title \n 📂 FILE: $file \n 🔴 MESSAGE: $message \n")
                 full_report+="$report \n"
-                if [$limit == 0]
-                  then
-                    full_report+="..."
                 echo "::set-output name=fail_report::"${full_report}""
               done
             else
