@@ -52,5 +52,6 @@ jobs:
 
           full_report=${full_report//$'\n'/'%0A'}
         
-          echo "$full_report"
+          indented=$(echo -e "$full_report")
+          echo $indented
       
