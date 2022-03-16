@@ -27,14 +27,16 @@ jobs:
         run: |
           if [ -f "index.json" ] 
             then
-              jq -c '.results[].suites[]' index.json | while read i; do
+              report=jq -c '.results[].suites[]' index.json | while read i; do
                   title=$(echo "$i" | jq '.tests[].title')
                   file=$(echo "$i" | jq '.fullFile')
                   message=$(echo "$i" | jq '.tests[].err.message')
                   report=$(echo "🧪 TEST: $title | 📂 FILE: $file | 🔴 MESSAGE: $message")
-                  echo "::set-output name=fail_report::"${report}""
-                  echo "$report"
+                  
               done
+              
+              echo "::set-output name=fail_report::"${report}""
+              echo "$report"
 
               failures=`cat index.json | jq ".stats.failures"`
 
@@ -48,9 +50,7 @@ jobs:
         id: log-variable
         run: |
           echo "${{ steps.set-variable.outputs.failures_count }}"
-          cat <<'EOF'
-            "${{ steps.set-variable.outputs.fail_report }}"
-          EOF
+          echo "${{ steps.set-variable.outputs.fail_report }}"
         
     
     
