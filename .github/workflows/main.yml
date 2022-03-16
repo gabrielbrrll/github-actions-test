@@ -17,3 +17,29 @@ jobs:
 
       - name: Another greeting
         run: echo "Hello, world!"
+  set-variable:
+    runs-on: ubuntu-latest
+    outputs:
+      bar: ${{ steps.set-variables.outputs.foo }}
+    
+    steps:
+      - name: Set variables
+        id: set-variables
+        run: |
+          echo "::set-output name=foo::gabriel"
+        
+  log_variable:
+    needs:
+      - set-variable
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Log variable
+        id: log-variable
+        run: |
+          echo ${{ needs.set-variable.outputs.bar }}
+        
+    
+    
+      
+
