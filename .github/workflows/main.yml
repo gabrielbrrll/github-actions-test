@@ -50,8 +50,9 @@ jobs:
           EOF
           )
 
-          full_report=${full_report//$'\n'/'%0A'}
+          full_report="${full_report//'%'/'%25'}"
+          full_report="${full_report//$'\n'/'%0A'}"
+          full_report="${full_report//$'\r'/'%0D'}"
         
-          indented=$(echo -e "$full_report")
-          echo $indented
+          echo "$full_report"
       
