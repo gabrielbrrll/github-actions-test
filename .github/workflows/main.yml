@@ -48,6 +48,7 @@ jobs:
           MY_STRING=$(cat << EOF
             "${{ steps.set-variable.outputs.fail_report }}"
           EOF
+          )
           
           echo "This is my string: $MY_STRING"
         
