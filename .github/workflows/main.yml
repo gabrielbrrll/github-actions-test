@@ -26,8 +26,8 @@ jobs:
         id: set-variable
         run: |
           if [ -f "index.json" ] 
-            some_string="SOME STRING"
             then
+              some_string="SOME STRING"
               jq -c '.results[].suites[]' index.json | while read -r i; do
                   title=$(echo "$i" | jq '.tests[].title')
                   file=$(echo "$i" | jq '.fullFile')
