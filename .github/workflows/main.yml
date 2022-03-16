@@ -37,6 +37,8 @@ jobs:
 
                   failures=`cat index.json | jq ".stats.failures"`
                   echo "::set-output name=failures_count::$failures"
+              else
+                echo "NOPE"
               fi
         
   log_variable:
