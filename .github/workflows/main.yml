@@ -24,6 +24,7 @@ jobs:
       - name: Set variables
         id: set-variables
         run: |
+          cd ../../
           if [ -f "index.json" ] 
               then
                   jq -c '.results[].suites[]' index.json | while read i; do
