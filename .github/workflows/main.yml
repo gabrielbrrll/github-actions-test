@@ -35,7 +35,7 @@ jobs:
                   report="🧪 TEST: $title | 📂 FILE: $file | 🔴 MESSAGE: $message"
                   some_string+="$report"
                   echo "$some_string"
-              done < .env
+              done
               echo "++++++++++++++++++++++++++ $some_string"
             else
               echo "No failed"
