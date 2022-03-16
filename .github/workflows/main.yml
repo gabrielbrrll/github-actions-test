@@ -45,7 +45,7 @@ jobs:
       - name: Log variable
         id: log-variable
         run: |
-          echo `WTHHTHTHTHTHHTTHTHHHTHTH!`
+          echo "WTHHTHTHTHTHHTTHTHHHTHTH!"
         
           full_report="TEST: "User can duplicate a book" FILE: "cypress/integration/cms/book_duplicate.feature" MESSAGE: "CypressError: sync skip; aborting execution"TEST: "User can delete a chapter" "User can not delete a chapter""
           echo "$full_report"
