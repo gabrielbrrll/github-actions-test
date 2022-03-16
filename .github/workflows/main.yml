@@ -48,9 +48,12 @@ jobs:
           echo "WTHHTHTHTHTHHTTHTHHHTHTH!"
         
           full_report="${{ steps.set-variable.outputs.fail_report }}"
-          full_report_string="$(echo "$full_report" | sed -e 's/[()&:/|\]/\\&/g')"
+          MY_STRING=$(cat << EOF
+            $full_report
+          EOF
+          )
           
-          echo '$full_report_string'
+          echo "$MY_STRING"
         
     
     
