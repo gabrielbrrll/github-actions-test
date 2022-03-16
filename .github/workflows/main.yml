@@ -34,7 +34,7 @@ jobs:
                   message=$(echo "$i" | jq '.tests[].err.message')
                   report="🧪 TEST: $title | 📂 FILE: $file | 🔴 MESSAGE: $message"
                   some_string+="$report"
-              done
+              done < .env
               echo "++++++++++++++++++++++++++ $some_string"
             else
               echo "No failed"
