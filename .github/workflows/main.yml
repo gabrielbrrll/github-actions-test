@@ -106,7 +106,7 @@ jobs:
                   "type": "context",
                   "elements": [
                     {
-                      "type": "mrkdwn",
+                      "type": "plain_text",
                       "text": "${{ needs.log-variable.outputs.report }}"
                     }
                   ]
