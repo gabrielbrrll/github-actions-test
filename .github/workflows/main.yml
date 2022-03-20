@@ -30,7 +30,7 @@ jobs:
         shell: bash
         run: |
           chmod +x "../scripts/cypress-fail-report-transformer.sh"
-          ../scripts/cypress-fail-report-transformer.sh
+          bash ../scripts/cypress-fail-report-transformer.sh
       
       - name: Set full report
         id: set-report
