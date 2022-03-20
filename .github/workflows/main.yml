@@ -29,8 +29,8 @@ jobs:
         id: set-variable
         shell: bash
         run: |
-          chmod +x "${GITHUB_WORKSPACE}/.github/workflows/scripts/cypress-fail-report-transformer.sh"
-          bash "${GITHUB_WORKSPACE}/.github//workflows/scripts/cypress-fail-report-transformer.sh"
+          chmod +x "${GITHUB_WORKSPACE}/.github/workflows/scripts/cypress-fail-report-transformer.bash"
+          "${GITHUB_WORKSPACE}/.github//workflows/scripts/cypress-fail-report-transformer.bash"
       
   slack-reporter:
     runs-on: ubuntu-latest
