@@ -7,8 +7,7 @@ if [ -f "index.json" ]
     failures=`cat index.json | jq ".stats.failures"`
     jq -c '.results[].suites[]' index.json | while read -r i && [[ "$limit" != 0 ]]; do
       fail_count=$(echo "$i" | jq '.failures | length')
-      echo $i
-      echo $fail_count
+      if [[ $fail_count -gt 0 ]]; then
         ((limit--))
         title=$(echo "$i" | jq '.tests[0].title')
         file=$(echo "$i" | jq '.fullFile')
@@ -19,6 +18,7 @@ if [ -f "index.json" ]
         if [[ $limit == 0 ]]; then
             full_report+="...showing 3 of ${failures} test fails"
         fi
+      fi
       full_report=$(echo ${full_report//$'\n'/'%0A'} | sed 's/"//g')
       echo "::set-output name=fail_count::"${failures}""
       echo "::set-output name=fail_report::"${full_report}""
