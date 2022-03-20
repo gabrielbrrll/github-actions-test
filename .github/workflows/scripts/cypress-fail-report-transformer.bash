@@ -6,8 +6,8 @@ if [ -f "index.json" ]
     limit=3
     failures=`cat index.json | jq ".stats.failures"`
     jq -c '.results[].suites[]' index.json | while read -r i && [[ "$limit" != 0 ]]; do
-      isFail=$(echo "$i" | jq '.tests[0].fail')
-      if [[ $isFail == true ]]; then
+      failArray=$(echo "$i" | jq '.failures')
+      if [ ${#failArray[@]} -gt 0 ]; then
         ((limit--))
         title=$(echo "$i" | jq '.tests[0].title')
         file=$(echo "$i" | jq '.fullFile')
