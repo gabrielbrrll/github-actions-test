@@ -16,11 +16,11 @@ if [ -f "index.json" ]
           full_report+="...showing 3 of ${failures} test fails"
       fi
       echo "::set-output name=fail_count::"${failures}""
-      echo "${{ full_report }}
-      full_report=$(echo ${full_report//$'\n'/'%0A'} | sed 's/"//g')
-      echo "${{ full_report }}"
       echo "::set-output name=fail_report::"${full_report}""
+     
     done
+     full_report=$(echo ${full_report//$'\n'/'%0A'} | sed 's/"//g')
+     echo "${{ full_report }}"
   else
     echo "No failed"
 fi
