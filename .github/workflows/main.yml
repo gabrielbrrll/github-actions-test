@@ -57,5 +57,6 @@ jobs:
 
           full_report=${full_report//$'\n'/'%0A'}
 
-          echo ${{ secrets.SLACK_WEBHOOK_URL }}
+          echo "slack hook"
+          echo "${{ secrets.SLACK_WEBHOOK_URL }}"
           echo -e "$full_report"
