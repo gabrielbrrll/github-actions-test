@@ -90,8 +90,15 @@ jobs:
           # For posting a rich message using Block Kit
           payload: |
             {
-              "text": "Oops! Found some failed integration tests. Huehue.",
               "blocks": [
+                {
+                  "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "Oops! Found ${{ needs.variable.outputs.failures }} tests failing in cypress.",
+                    "emoji": true
+                  }
+                },
                 {
                   "type": "section",
                   "text": {
