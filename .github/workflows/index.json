@@ -69,7 +69,7 @@
                 }
             ],
             "passes": [],
-            "failures": [],
+            "failures": ["d9a9d2ba"],
             "pending": [],
             "skipped": [],
             "duration": 0,
@@ -624,9 +624,9 @@
                     ],
                     "suites": [],
                     "passes": [],
-                    "failures": [],
+                    "skipped": [],
                     "pending": [],
-                    "skipped": [
+                    "failures": [
                         "5b9bb779-7500-41b9-95be-1147069d40fa",
                         "7e5bcb20-87f1-43d2-b78f-80e971efa0c1",
                         "439cb368-918a-4aa7-9f4d-0ef837ad3e70",
@@ -880,9 +880,9 @@
                     ],
                     "suites": [],
                     "passes": [],
-                    "failures": [],
+                    "skipped": [],
                     "pending": [],
-                    "skipped": ["a6142ee7-a1ad-478c-b035-4fe15eaffe65"],
+                    "failures": ["a6142ee7-a1ad-478c-b035-4fe15eaffe65"],
                     "duration": 1170,
                     "root": false,
                     "rootEmpty": false,
