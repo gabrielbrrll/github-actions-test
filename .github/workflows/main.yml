@@ -94,7 +94,7 @@ jobs:
                 {
                   "type": "section",
                   "text": {
-                    "type": "plain_text",
+                    "type": "markdwn",
                     "text": ":warning: *Oops!* Found ${{ needs.log-variable.outputs.failures }} integration test fails. Huehue."
                   }
                 },
