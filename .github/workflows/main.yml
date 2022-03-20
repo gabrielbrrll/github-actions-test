@@ -93,9 +93,11 @@ jobs:
               "text": "Oops! Found some failed integration tests. Huehue.",
               "blocks": [
                 {
-                  "type": "plain_text",
-                  "emoji": true,
-                  "text": " 🧪 TEST: 'User can navigate to a valid page in the pdf document'"
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": " 🧪 TEST: 'User can navigate to a valid page in the pdf document'"
+                  }
                 }
               ]
             }
