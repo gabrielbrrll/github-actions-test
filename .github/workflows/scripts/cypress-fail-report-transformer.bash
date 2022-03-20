@@ -20,7 +20,7 @@ if [ -f "index.json" ]
      
     done
      full_report=$(echo ${full_report//$'\n'/'%0A'} | sed 's/"//g')
-     echo "${{ full_report }}"
+     echo $full_report
   else
     echo "No failed"
 fi
