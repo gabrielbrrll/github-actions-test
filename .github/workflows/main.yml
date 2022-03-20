@@ -106,7 +106,7 @@ jobs:
                   "elements": [
                     {
                       "type": "mrkdwn",
-                      "text": ":technologist::skin-tone-2: *Commit by* ${{ github.event.pull_request.user.login }}"
+                      "text": ":technologist::skin-tone-2: *Commit by* ${{ github.event.pull_request.user.login }} from branch *${{ github.event.pull_request.base.ref }}*"
                     }
                   ]
                 }
@@ -126,7 +126,21 @@ jobs:
                     }
                   ]
                 }
-              ]
+              ],
+              "blocks": [
+                {
+                  "type": "divider"
+                },
+                {
+                  "type": "context",
+                  "elements": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "more info: from commit | from workflow"
+                    }
+                  ]
+                }
+              ],
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
