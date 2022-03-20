@@ -93,11 +93,9 @@ jobs:
               "text": "Oops! Found some failed integration tests. Huehue.",
               "blocks": [
                 {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "${{ needs.log-variable.outputs.report }}"
-                  }
+                  "type": "plain_text",
+                  "emoji": true,
+                  "text": "${{ needs.log-variable.outputs.report }}"
                 }
               ]
             }
