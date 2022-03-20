@@ -18,8 +18,8 @@ jobs:
   log-variable:
     runs-on: ubuntu-latest
     outputs:
-      failures: ${{ steps.process-failed-tests.outputs.fail_count }}
-      report: ${{ steps.process-failed-tests.outputs.fail_report }}
+      failures: ${{ steps.set-variable.outputs.fail_count }}
+      report: ${{ steps.set-variable.outputs.fail_report }}
 
     steps:
     
@@ -43,8 +43,7 @@ jobs:
                 if [[ $limit == 0 ]]; then
                     full_report+="...showing 3 of ${failures} test fails"
                 fi
-                echo "::set-output name=report::"${full_report}""
-                echo "::set-output name=failures::"failureee""
+                echo "::set-output name=fail_count::"${failures}""
               done
             else
               echo "No failed"
@@ -60,6 +59,8 @@ jobs:
           )
 
           full_report=${full_report//$'\n'/'%0A'}
+          echo "::set-output name=report::"${full_report}""
+          
 
           echo "slack hook"
           echo "${{ secrets.SLACK_WEBHOOK_URL }}"
