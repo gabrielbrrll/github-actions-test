@@ -43,7 +43,7 @@ jobs:
                 if [[ $limit == 0 ]]; then
                     full_report+="...showing 3 of ${failures} test fails"
                 fi
-                echo "::set-output name=fail_report::"${full_report}""
+                echo "::set-output name=report::"${full_report}""
               done
             else
               echo "No failed"
