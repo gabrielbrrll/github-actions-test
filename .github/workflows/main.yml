@@ -95,7 +95,7 @@ jobs:
                   "type": "header",
                   "text": {
                     "type": "plain_text",
-                    "text": "Oops! Found ${{ needs.log-variable.outputs.failures }} integration test fails. Huehue."
+                    "text": ":warning: Oops! Found ${{ needs.log-variable.outputs.failures }} integration test fails. Huehue."
                   }
                 },
                 {
@@ -105,13 +105,8 @@ jobs:
                   "type": "context",
                   "elements": [
                     {
-                      "type": "image",
-                      "image_url": "https://api.slack.com/img/blocks/bkb_template_images/notificationsWarningIcon.png",
-                      "alt_text": "notifications warning icon"
-                    },
-                    {
                       "type": "mrkdwn",
-                      "text": "*Commit by* ${{ github.event.pull_request.user.login }}"
+                      "text": ":technologist::skin-tone-2: *Commit by* ${{ github.event.pull_request.user.login }}"
                     }
                   ]
                 }
