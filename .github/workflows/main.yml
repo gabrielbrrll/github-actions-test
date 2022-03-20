@@ -92,7 +92,7 @@ jobs:
             {
               "attachments": [
                 {
-                  "color": "danger",
+                  "color": "red",
                   "blocks": [
                     {
                       "type": "section",
