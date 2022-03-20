@@ -107,7 +107,7 @@ jobs:
                     "type": "mrkdwn",
                     "text": "Commit by: Gab"
                   }
-                },
+                }
               ],
               "attachments": [
                 {
