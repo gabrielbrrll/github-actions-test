@@ -108,7 +108,7 @@ jobs:
                     "elements": [
                       {
                         "type": "mrkdwn",
-                        "text": '${{ needs.log-variable.outputs.report }}'
+                        "text": 'TEST: User can navigate to a valid page in the pdf document User cannot navigate to an invalid page of the pdf document User cannot go to previous page when it is first page of the pdf document User cannot go to next page when it is last page of the pdf document FILE: cypress/integration/cms/question-pagination.feature MESSAGE: CypressError: sync skip; aborting execution CypressError: sync skip; aborting execution CypressError: sync skip; aborting execution CypressError: sync skip; aborting execution TEST: User updates assignments FILE: cypress/integration/cms/assignment_update.feature MESSAGE: CypressError: sync skip; aborting execution'
                       }
                     ]
                   }
