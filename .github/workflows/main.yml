@@ -91,24 +91,15 @@ jobs:
           payload: |
             {
               {
-                "blocks": [
+                "attachments": [
                   {
-                    "type": "header",
-                    "text": {
-                      "type": "plain_text",
-                      "text": "Oops! Found ${{ needs.log-variable.outputs.failures }} tests failing in cypress.",
-                      "emoji": true
-                    }
-                  },
-                  {
-                    "type": "divider"
-                  },
-                  {
-                    "type": "context",
-                    "elements": [
+                    "blocks": [
                       {
-                        "type": "mrkdwn",
-                        "text": 'HELLO'
+                        "type": "section",
+                        "text": {
+                          "type": "mrkdwn",
+                          "text": "${{ needs.log-variable.outputs.report }}"
+                        }
                       }
                     ]
                   }
