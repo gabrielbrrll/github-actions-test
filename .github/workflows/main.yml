@@ -38,7 +38,7 @@ jobs:
                 title=$(echo "$i" | jq '.tests[].title')
                 file=$(echo "$i" | jq '.fullFile')
                 message=$(echo "$i" | jq '.tests[].err.message')
-                report=$(echo TEST: $title \nFILE: $file \nMESSAGE: $message \n")
+                report=$(echo "TEST: $title \nFILE: $file \nMESSAGE: $message \n")
                 full_report+="$report \n"
                 if [[ $limit == 0 ]]; then
                     full_report+="...showing 3 of ${failures} test fails"
