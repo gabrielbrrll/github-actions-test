@@ -108,7 +108,7 @@ jobs:
                     "elements": [
                       {
                         "type": "mrkdwn",
-                        "text": "${{ needs.log-variable.outputs.report }}"
+                        "text": '${{ needs.log-variable.outputs.report }}'
                       }
                     ]
                   }
