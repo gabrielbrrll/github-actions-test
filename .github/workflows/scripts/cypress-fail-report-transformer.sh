@@ -13,15 +13,15 @@ if [ -f "index.json" ]
       if [[ $limit == 0 ]]; then
           full_report+="...showing 3 of ${failures} test fails"
       fi
-      echo "::set-output name=fail_count::"${failures}""
       
-      full_report=$(cat << EOF
-        ${{ steps.set-variable.outputs.fail_report }}
+      report=$(cat << EOF
+        ${{ full_report }}
       EOF
       )
 
-      full_report=$(echo ${full_report//$'\n'/'%0A'} | sed 's/"//g')
-      echo "::set-output name=fail_report::"${full_report}""
+      final_report=$(echo ${report//$'\n'/'%0A'} | sed 's/"//g')
+      echo "::set-output name=fail_count::"${failures}""
+      echo "::set-output name=fail_report::"${final_report}""
     done
   else
     echo "No failed"
