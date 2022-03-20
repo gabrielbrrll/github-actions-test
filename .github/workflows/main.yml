@@ -44,6 +44,7 @@ jobs:
                     full_report+="...showing 3 of ${failures} test fails"
                 fi
                 echo "::set-output name=fail_count::"${failures}""
+                echo "::set-output name=fail_report::"${full_report}""
               done
             else
               echo "No failed"
