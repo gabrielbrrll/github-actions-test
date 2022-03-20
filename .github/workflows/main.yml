@@ -92,7 +92,8 @@ jobs:
             {
               "attachments": [
                 {
-                  "color": "red",
+                  "color": "#FF0000",
+                  "pretext": "Oops! Found some tests failing on Cypress.",
                   "blocks": [
                     {
                       "type": "section",
