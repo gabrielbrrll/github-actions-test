@@ -92,7 +92,7 @@ jobs:
             {
               "blocks": [
                 {
-                  "type": "header",
+                  "type": "section",
                   "text": {
                     "type": "plain_text",
                     "text": ":warning: Oops! Found ${{ needs.log-variable.outputs.failures }} integration test fails. Huehue."
@@ -119,7 +119,7 @@ jobs:
                       "type": "section",
                       "text": {
                         "type": "mrkdwn",
-                        "text": "Please check this out. :shipit"
+                        "text": "Please check this out. :pray:"
                       }
                     },
                     {
