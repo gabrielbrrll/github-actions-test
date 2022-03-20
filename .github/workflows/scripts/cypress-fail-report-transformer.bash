@@ -15,12 +15,10 @@ if [ -f "index.json" ]
       if [[ $limit == 0 ]]; then
           full_report+="...showing 3 of ${failures} test fails"
       fi
+      full_report=$(echo ${full_report//$'\n'/'%0A'} | sed 's/"//g')
       echo "::set-output name=fail_count::"${failures}""
       echo "::set-output name=fail_report::"${full_report}""
-     
     done
-     full_report=$(echo ${full_report//$'\n'/'%0A'} | sed 's/"//g')
-     echo $full_report
   else
     echo "No failed"
 fi
