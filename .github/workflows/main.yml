@@ -96,7 +96,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": " 🧪 TEST: 'User can navigate to a valid page in the pdf document'"
+                    "text": "${{ needs.log-variable.outputs.report }}"
                   }
                 }
               ]
