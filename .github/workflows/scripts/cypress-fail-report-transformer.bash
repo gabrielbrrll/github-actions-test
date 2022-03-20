@@ -22,7 +22,7 @@ if [ -f "index.json" ]
 fi
 
 full_report=$(cat << EOF
-  ${{ full_report }}
+  $full_report
 EOF
 )
   
