@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       failures: ${{ steps.set-variable.outputs.fail_count }}
-      report: ${{ steps.set-report.outputs.fail_report }}
+      report: ${{ steps.set-variable.outputs.fail_report }}
 
     steps:
     
