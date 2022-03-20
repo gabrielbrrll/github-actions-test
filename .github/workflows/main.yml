@@ -103,13 +103,8 @@ jobs:
                   "type": "divider"
                 },
                 {
-                  "type": "context",
-                  "elements": [
-                    {
-                      "type": "mrkdwn",
-                      "text": "${{ needs.log-variable.outputs.report }}"
-                    }
-                  ]
+                  "type": "mrkdwn",
+                  "text": "${{ needs.log-variable.outputs.report }}"
                 },
               ]
             }
