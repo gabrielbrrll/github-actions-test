@@ -95,9 +95,12 @@ jobs:
                   "type": "header",
                   "text": {
                     "type": "plain_text",
-                    "text": "Oops! Found ${{ needs.variable.outputs.failures }} tests failing in cypress.",
+                    "text": "Oops! Found ${{ needs.log-variable.outputs.failures }} tests failing in cypress.",
                     "emoji": true
                   }
+                },
+                {
+                  "type": "divider"
                 },
                 {
                   "type": "section",
