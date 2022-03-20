@@ -59,7 +59,7 @@ jobs:
           EOF
           )
 
-          full_report=${full_report//$'\n'/'%0A'}
+          full_report=$(echo ${full_report//$'\n'/'%0A'} | sed 's/h//')
           echo "::set-output name=fail_report::"${full_report}""
           
 
