@@ -14,12 +14,12 @@ if [ -f "index.json" ]
         message=$(echo "$i" | jq '.tests[0].err.message')
         run_id=$(echo "$i" | jq '.uuid')
         if [[ $fail_count -gt 1 ]]; then
-            title+="(1/$fail_count)"
+            title+=" (showing 1 out of $fail_count tests failing"
         fi
         report=$(echo ":test_tube:*TEST*: $title \n:open_file_folder:*FILE*: <https://cypress-dashboard.staging.manabie.io:31600/instance/$run_id | $file> \n:speech_balloon:*MESSAGE*: $message \n")
         full_report+="$report \n"
         if [[ $limit == 0 ]]; then
-            full_report+="...showing 3 of ${failures} test fails"
+            full_report+="...showing 3 of ${failures} test suite fails"
         fi
       fi
       full_report=$(echo ${full_report//$'\n'/'%0A'} | sed 's/"//g')
