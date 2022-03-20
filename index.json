@@ -192,7 +192,7 @@
                     "passes": [],
                     "skipped": [],
                     "pending": [],
-                    "failures": ["a6142ee7-a1ad-478c-b035-4fe15eaffe65"],
+                    "failures": [],
                     "duration": 1170,
                     "root": false,
                     "rootEmpty": false,
