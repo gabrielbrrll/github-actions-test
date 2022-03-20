@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if [ -f "index.json" ] 
   then
     full_report=""
