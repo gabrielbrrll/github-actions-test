@@ -90,23 +90,30 @@ jobs:
           # For posting a rich message using Block Kit
           payload: |
             {
-              "blocks": [
-                {
-                  "type": "header",
-                  "text": {
-                    "type": "plain_text",
-                    "text": "Oops! Found ${{ needs.log-variable.outputs.failures }} tests failing in cypress.",
-                    "emoji": true
+              {
+                "blocks": [
+                  {
+                    "type": "header",
+                    "text": {
+                      "type": "plain_text",
+                      "text": "Oops! Found ${{ needs.log-variable.outputs.failures }} tests failing in cypress.",
+                      "emoji": true
+                    }
+                  },
+                  {
+                    "type": "divider"
+                  },
+                  {
+                    "type": "context",
+                    "elements": [
+                      {
+                        "type": "mrkdwn",
+                        "text": "${{ needs.log-variable.outputs.report }}"
+                      }
+                    ]
                   }
-                },
-                {
-                  "type": "divider"
-                },
-                {
-                  "type": "mrkdwn",
-                  "text": "${{ needs.log-variable.outputs.report }}"
-                },
-              ]
+                ]
+              }
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
