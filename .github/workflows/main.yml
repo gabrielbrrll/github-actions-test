@@ -102,11 +102,18 @@ jobs:
                   "type": "divider"
                 },
                 {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "Commit by: Gab"
-                  }
+                  "type": "context",
+                  "elements": [
+                    {
+                      "type": "image",
+                      "image_url": "https://api.slack.com/img/blocks/bkb_template_images/notificationsWarningIcon.png",
+                      "alt_text": "notifications warning icon"
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Conflicts with Team Huddle: 4:15-4:30pm*"
+                    }
+                  ]
                 }
               ],
               "attachments": [
