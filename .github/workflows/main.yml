@@ -95,7 +95,7 @@ jobs:
                 {
                   "type": "plain_text",
                   "emoji": true,
-                  "text": "${{ needs.log-variable.outputs.report }}"
+                  "text": " 🧪 TEST: "User can navigate to a valid page in the pdf document""
                 }
               ]
             }
