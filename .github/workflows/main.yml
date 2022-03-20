@@ -96,7 +96,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "HUEHUEHUE"
+                    "text": '${{ needs.log-variable.outputs.report }}'
                   }
                 }
               ]
