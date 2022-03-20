@@ -17,12 +17,12 @@ if [ -f "index.json" ]
     done
   else
     echo "No failed"
-    
-  full_report=$(cat << EOF
-    ${{ full_report }}
-  EOF
-  )
-  
-  full_report=$(echo ${full_report//$'\n'/'%0A'} | sed 's/"//g')
-  echo "::set-output name=fail_report::"${full_report}""
 fi
+
+full_report=$(cat << EOF
+  ${{ full_report }}
+EOF
+)
+  
+full_report=$(echo ${full_report//$'\n'/'%0A'} | sed 's/"//g')
+echo "::set-output name=fail_report::"${full_report}""
