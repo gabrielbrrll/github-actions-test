@@ -116,6 +116,13 @@ jobs:
                   "color": "#FF0000",
                   "blocks": [
                     {
+                      "type": "section",
+                      "text": {
+                        "type": "mrkdwn",
+                        "text": "Please check this out. :shipit"
+                      }
+                    },
+                    {
                       "type": "context",
                       "elements": [
                         {
