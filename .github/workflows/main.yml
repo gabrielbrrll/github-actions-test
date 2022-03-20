@@ -44,6 +44,7 @@ jobs:
                     full_report+="...showing 3 of ${failures} test fails"
                 fi
                 echo "::set-output name=report::"${full_report}""
+                echo "::set-output name=failures::FAILURE
               done
             else
               echo "No failed"
@@ -78,6 +79,7 @@ jobs:
         id: check-variable
         run: |
           echo "${{ needs.log-variable.outputs.report }}"
+          echo "${{ needs.log-variable.outputs.failures }}"
       
       - name: Send custom JSON data to Slack workflow
         id: slack
