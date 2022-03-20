@@ -32,22 +32,6 @@ jobs:
           chmod +x "${GITHUB_WORKSPACE}/.github/workflows/scripts/cypress-fail-report-transformer.sh"
           bash "${GITHUB_WORKSPACE}/.github//workflows/scripts/cypress-fail-report-transformer.sh"
       
-      - name: Set full report
-        id: set-report
-        run: |
-          full_report=$(cat << EOF
-            ${{ steps.set-variable.outputs.fail_report }}
-          EOF
-          )
-
-          full_report=$(echo ${full_report//$'\n'/'%0A'} | sed 's/"//g')
-          echo "::set-output name=fail_report::"${full_report}""
-          
-
-          echo "slack hook"
-          echo "${{ secrets.SLACK_WEBHOOK_URL }}"
-          echo -e "$full_report"
-          
   slack-reporter:
     runs-on: ubuntu-latest
     needs:
@@ -57,12 +41,6 @@ jobs:
     steps:
     
       - uses: actions/checkout@v2
-      
-      - name: Check-variable
-        id: check-variable
-        run: |
-          echo '${{ needs.log-variable.outputs.report }}'
-          echo "${{ needs.log-variable.outputs.failures }}"
       
       - name: Send custom JSON data to Slack workflow
         id: slack
