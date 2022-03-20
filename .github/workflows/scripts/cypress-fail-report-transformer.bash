@@ -16,6 +16,7 @@ if [ -f "index.json" ]
           full_report+="...showing 3 of ${failures} test fails"
       fi
       echo "::set-output name=fail_count::"${failures}""
+      echo "${{ full_report }}
       full_report=$(cat << EOF
         $full_report
       EOF
@@ -28,5 +29,3 @@ if [ -f "index.json" ]
   else
     echo "No failed"
 fi
-
-
