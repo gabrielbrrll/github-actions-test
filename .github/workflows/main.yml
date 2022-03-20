@@ -80,7 +80,7 @@ jobs:
       - name: Check-variable
         id: check-variable
         run: |
-          echo "${{ needs.log-variable.outputs.report }}"
+          echo '${{ needs.log-variable.outputs.report }}'
           echo "${{ needs.log-variable.outputs.failures }}"
       
       - name: Send custom JSON data to Slack workflow
