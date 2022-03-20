@@ -29,8 +29,8 @@ jobs:
         id: set-variable
         shell: bash
         run: |
-          chmod +x "${GITHUB_WORKSPACE}/.github/scripts/cypress-fail-report-transformer.sh"
-          ${GITHUB_WORKSPACE}/.github/scripts/cypress-fail-report-transformer.sh
+          chmod +x "${GITHUB_WORKSPACE}/.github/workflow/scripts/cypress-fail-report-transformer.sh"
+          ${GITHUB_WORKSPACE}/.github/workflow/scripts/cypress-fail-report-transformer.sh
       
       - name: Set full report
         id: set-report
