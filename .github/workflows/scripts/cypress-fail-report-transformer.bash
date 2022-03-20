@@ -10,8 +10,8 @@ if [ -f "index.json" ]
       title=$(echo "$i" | jq '.tests[0].title')
       file=$(echo "$i" | jq '.fullFile')
       message=$(echo "$i" | jq '.tests[0].err.message')
-      cypress_link=$(echo "$i" | jq '.uuid')
-      report=$(echo ":test_tube:*TEST*: $title \n:open_file_folder:*FILE*: $file \n:speech_balloon:*MESSAGE*: $message \n *<https://cypress-dashboard.staging.manabie.io:31600/instance/$cypress_link | Cypress link>*")
+      run_id=$(echo "$i" | jq '.uuid')
+      report=$(echo ":test_tube:*TEST*: $title \n:open_file_folder:*FILE*: <https://cypress-dashboard.staging.manabie.io:31600/instance/$run_id | $file \n:speech_balloon:*MESSAGE*: $message \n")
       full_report+="$report \n"
       if [[ $limit == 0 ]]; then
           full_report+="...showing 3 of ${failures} test fails"
