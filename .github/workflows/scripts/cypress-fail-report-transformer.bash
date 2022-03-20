@@ -7,7 +7,7 @@ if [ -f "index.json" ]
     failures=`cat index.json | jq ".stats.failures"`
     jq -c '.results[].suites[]' index.json | while read -r i && [[ "$limit" != 0 ]]; do
       isFail=$(echo "$i" | jq '.tests[0].fail')
-      if [[ $isFail ]]; then
+      if [[ $isFail == true ]]; then
         ((limit--))
         title=$(echo "$i" | jq '.tests[0].title')
         file=$(echo "$i" | jq '.fullFile')
