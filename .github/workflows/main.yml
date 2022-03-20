@@ -90,21 +90,19 @@ jobs:
           # For posting a rich message using Block Kit
           payload: |
             {
-              {
-                "attachments": [
-                  {
-                    "blocks": [
-                      {
-                        "type": "section",
-                        "text": {
-                          "type": "mrkdwn",
-                          "text": "${{ needs.log-variable.outputs.report }}"
-                        }
+              "attachments": [
+                {
+                  "blocks": [
+                    {
+                      "type": "section",
+                      "text": {
+                        "type": "mrkdwn",
+                        "text": "${{ needs.log-variable.outputs.report }}"
                       }
-                    ]
-                  }
-                ]
-              }
+                    }
+                  ]
+                }
+              ]
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
