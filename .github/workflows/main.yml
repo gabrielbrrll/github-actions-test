@@ -111,7 +111,7 @@ jobs:
                     },
                     {
                       "type": "mrkdwn",
-                      "text": "*Conflicts with Team Huddle: 4:15-4:30pm*"
+                      "text": "*Commit by* ${{ github.event.pull_request.user.login }}"
                     }
                   ]
                 }
