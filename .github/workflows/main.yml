@@ -50,8 +50,8 @@ jobs:
           fi
         
       
-      - name: Log variable
-        id: log-variable
+      - name: Set full report
+        id: set-report
         run: |
           full_report=$(cat << EOF
             ${{ steps.set-variable.outputs.fail_report }}
@@ -59,7 +59,7 @@ jobs:
           )
 
           full_report=${full_report//$'\n'/'%0A'}
-          echo "::set-output name=report::"${full_report}""
+          echo "::set-output name=fail_report::"${full_report}""
           
 
           echo "slack hook"
