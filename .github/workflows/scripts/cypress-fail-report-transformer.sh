@@ -21,9 +21,10 @@ if [ -f "index.json" ]
     echo "No failed"
 fi
 
-echo "${{ full_report }}"
-
-echo "HEREE"
-full_report=$(echo "${{ full_report//$'\n'/'%0A' }}" | sed 's/"//g')
+full_report=$(cat << EOF
+  ${{ full_report }}
+EOF
+)
+  
+full_report=$(echo ${full_report//$'\n'/'%0A'} | sed 's/"//g')
 echo "::set-output name=fail_report::"${full_report}""
-echo "DONE"
