@@ -95,12 +95,29 @@ jobs:
                   "type": "header",
                   "text": {
                     "type": "plain_text",
-                    "text": "Oops! Found ${{ needs.log-variable.outputs.failures }} some integration test fails. Huehue."
+                    "text": "Oops! Found ${{ needs.log-variable.outputs.failures }} integration test fails. Huehue."
                   }
                 },
                 {
                   "type": "divider"
-                }
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "Commit by: Gab"
+                  }
+                },
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "Commit id: commit id"
+                    }
+                  ]
+                },
+                
               ],
               "attachments": [
                 {
