@@ -5,7 +5,7 @@ if [ -f "index.json" ]
     full_report=""
     limit=3
     failures=`cat index.json | jq ".stats.failures"`
-    jq -c '.results[].suites[] | select(.tests[].fail)' index.json | while read -r i && [[ "$limit" != 0 ]]; do
+    jq -c '.results[].suites[] | select(.tests[0].fail == true)' index.json | while read -r i && [[ "$limit" != 0 ]]; do
       ((limit--))
       title=$(echo "$i" | jq '.tests[0].title')
       file=$(echo "$i" | jq '.fullFile')
