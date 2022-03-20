@@ -90,10 +90,10 @@ jobs:
           # For posting a rich message using Block Kit
           payload: |
             {
+              "text": "Oops! Found some tests failing on Cypress.",
               "attachments": [
                 {
                   "color": "#FF0000",
-                  "pretext": "Oops! Found some tests failing on Cypress.",
                   "blocks": [
                     {
                       "type": "section",
