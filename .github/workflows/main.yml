@@ -108,16 +108,6 @@ jobs:
                     "text": "Commit by: Gab"
                   }
                 },
-                {
-                  "type": "section",
-                  "fields": [
-                    {
-                      "type": "mrkdwn",
-                      "text": "Commit id: commit id"
-                    }
-                  ]
-                },
-                
               ],
               "attachments": [
                 {
