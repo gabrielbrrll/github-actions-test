@@ -121,11 +121,13 @@ jobs:
                   "color": "#FF0000",
                   "blocks": [
                     {
-                      "type": "section",
-                      "text": {
-                        "type": "mrkdwn",
-                        "text": "${{ needs.log-variable.outputs.report }}"
-                      }
+                      "type": "context",
+                      "elements": [
+                        {
+                          "type": "mrkdwn",
+                          "text": "${{ needs.log-variable.outputs.report }}"
+                        }
+                      ]
                     }
                   ]
                 }
