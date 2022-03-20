@@ -14,6 +14,13 @@ if [ -f "index.json" ]
           full_report+="...showing 3 of ${failures} test fails"
       fi
       echo "::set-output name=fail_count::"${failures}""
+      
+      full_report=$(cat << EOF
+        ${{ steps.set-variable.outputs.fail_report }}
+      EOF
+      )
+
+      full_report=$(echo ${full_report//$'\n'/'%0A'} | sed 's/"//g')
       echo "::set-output name=fail_report::"${full_report}""
     done
   else
