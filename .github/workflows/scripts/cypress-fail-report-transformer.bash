@@ -22,9 +22,10 @@ if [ -f "index.json" ]
 fi
 
 full_report=$(cat << EOF
-  $full_report
+  "${{ full_report }}"
 EOF
 )
   
 full_report=$(echo ${full_report//$'\n'/'%0A'} | sed 's/"//g')
+echo "${{ full_report }}"
 echo "::set-output name=fail_report::"${full_report}""
