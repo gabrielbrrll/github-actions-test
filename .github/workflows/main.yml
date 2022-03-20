@@ -130,24 +130,22 @@ jobs:
                           "text": "${{ needs.log-variable.outputs.report }}"
                         }
                       ]
+                    },
+                    {
+                      "type": "divider"
+                    },
+                    {
+                      "type": "context",
+                      "elements": [
+                        {
+                          "type": "mrkdwn",
+                          "text": "more info: <${{ github.server_url }}/${{ github.repository }}/commit/${{ github.event.pull_request.head.sha }}|from commit> | <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|from workflow>"
+                        }
+                      ]
                     }
                   ]
                 }
               ],
-              "blocks": [
-                {
-                  "type": "divider"
-                },
-                {
-                  "type": "context",
-                  "elements": [
-                    {
-                      "type": "mrkdwn",
-                      "text": "more info: from commit | <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|from workflow>"
-                    }
-                  ]
-                }
-              ]
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
