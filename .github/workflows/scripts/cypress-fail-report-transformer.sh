@@ -24,5 +24,7 @@ full_report=$(cat << EOF
 EOF
 )
   
+echo "HEREE"
 full_report=$(echo ${full_report//$'\n'/'%0A'} | sed 's/"//g')
 echo "::set-output name=fail_report::"${full_report}""
+echo "DONE"
