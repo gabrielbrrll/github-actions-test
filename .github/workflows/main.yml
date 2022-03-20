@@ -95,7 +95,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": ":warning: *Oops!* Found ${{ needs.log-variable.outputs.failures }} integration test fails. Huehue."
+                    "text": ":warning: *Oops!* Found ${{ needs.log-variable.outputs.failures }} integration test fail(s) on Cypress. Huehue. :pleading_face:"
                   }
                 },
                 {
