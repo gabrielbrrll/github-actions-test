@@ -89,7 +89,7 @@ jobs:
                                   "elements": [
                                       {
                                           "type": "mrkdwn",
-                                          "text": "${{ needs.log-variable.outputs.report }}"
+                                          "text": ":test_tube:*TEST*: User can create LOs (example #1) (showing 1 out of 2 tests failing) \n:open_file_folder:*FILE*: <https://cypress-dashboard.staging.***.io:31600/instance/76cc174f-0fc4-46bb-9e48-b875aebbcb71 | cypress/integration/cms/LO_create.feature> \n:speech_balloon:*MESSAGE*: AssertionError: Timed out retrying after 20000ms: Expected to find content: 'fail' within the element: [ <li.MuiButtonBase-root.MuiListItem-root.MuiMenuItem-root.MuiMenuItem-gutters.MuiListItem-gutters.MuiListItem-button.Mui-focusVisible.Mui-focusVisible>, 4 more... ] but never did. \n \n"
                                       }
                                   ]
                               },
