@@ -20,6 +20,8 @@ jobs:
     outputs:
       failures: ${{ steps.set-variable.outputs.fail_count }}
       report: ${{ steps.set-variable.outputs.fail_report }}
+      report_1: ${{ steps.set-variable.outputs.fail_report_1 }}
+      report_2: ${{ steps.set-variable.outputs.fail_report_2 }}
 
     steps:
     
@@ -28,7 +30,8 @@ jobs:
       - name: Set variable
         id: set-variable
         run: |
-          bash ${GITHUB_WORKSPACE}/.github//workflows/scripts/cypress-fail-report-transformer.bash
+          one=1
+          echo "::set-output name=fail_report_${one}::"1""
       
   slack-reporter:
     runs-on: ubuntu-latest
@@ -43,12 +46,8 @@ jobs:
       - name: Check variable
         id: check-variable
         run: |
-          search_dir=./.github/workflows
-          for entry in "$search_dir"/*
-          do
-            echo "$entry"
-          done
-          echo "${{ needs.log-variable.outputs.report }}"
+          echo "${{ needs.log-variable.outputs.report_1 }} report 1"
+          echo "${{ needs.log-variable.outputs.report_2 }} report 2"
       
 #       - name: Send custom JSON data to Slack workflow
 #         id: slack
