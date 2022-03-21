@@ -74,70 +74,70 @@ jobs:
         run: |
           echo "${{ needs.log-variable.outputs.report }} FAILLL REPORT"
       
-#       - name: Send custom JSON data to Slack workflow
-#         id: slack
-#         uses: slackapi/slack-github-action@v1.18.0
-#         with:
-#           # For posting a rich message using Block Kit
-#           payload: |
-#               {
-#                   "blocks": [
-#                       {
-#                           "type": "section",
-#                           "text": {
-#                           "type": "mrkdwn",
-#                           "text": ":warning: [PLEASE IGNORE, TESTING] *Oops!* Found ${{ needs.log-variable.outputs.failures }} integration test fail(s) on Cypress. :pleading_face:"
-#                           }
-#                       },
-#                       {
-#                           "type": "divider"
-#                       },
-#                       {
-#                           "type": "context",
-#                           "elements": [
-#                               {
-#                                   "type": "mrkdwn",
-#                                   "text": ":technologist::skin-tone-2: *Commit by* ${{ github.event.pull_request.user.login }} from *Pull Request*: *<${{ github.server_url }}/${{ github.repository }}/pull/${{ steps.get-pr-details.outputs.pull-request-number }}|${{ github.event.pull_request.title }}>*"
-#                               }
-#                           ]
-#                       }
-#                   ],
-#                   "attachments": [
-#                       {
-#                           "color": "#FF0000",
-#                           "blocks": [
-#                               {
-#                                   "type": "section",
-#                                   "text": {
-#                                   "type": "mrkdwn",
-#                                   "text": "Please check this out. :pray:"
-#                                   }
-#                               },
-#                               {
-#                                   "type": "context",
-#                                   "elements": [
-#                                       {
-#                                           "type": "mrkdwn",
-#                                           "text": ":test_tube:*TEST*: User can create LOs (example #1) (showing 1 out of 2 tests failing) \n:open_file_folder:*FILE*: <https://cypress-dashboard.staging.***.io:31600/instance/76cc174f-0fc4-46bb-9e48-b875aebbcb71 | cypress/integration/cms/LO_create.feature> \n:speech_balloon:*MESSAGE*: AssertionError: Timed out retrying after 20000ms: Expected to find content: 'fail' within the element: [ <li.MuiButtonBase-root.MuiListItem-root.MuiMenuItem-root.MuiMenuItem-gutters.MuiListItem-gutters.MuiListItem-button.Mui-focusVisible.Mui-focusVisible>, 4 more... ] but never did. \n \n"
-#                                       }
-#                                   ]
-#                               },
-#                               {
-#                                   "type": "divider"
-#                               },
-#                               {
-#                                   "type": "context",
-#                                   "elements": [
-#                                       {
-#                                           "type": "mrkdwn",
-#                                           "text": "more info: <${{ github.server_url }}/${{ github.repository }}/commit/${{ github.event.pull_request.head.sha }}|from commit> | <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|from workflow> | <https://cypress-dashboard.staging.manabie.io:31600/runs | cypress dashboard>"
-#                                       }
-#                                   ]
-#                               }
-#                           ]
-#                       }
-#                   ]
-#               }
-#         env:
-#           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-#           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+      - name: Send custom JSON data to Slack workflow
+        id: slack
+        uses: slackapi/slack-github-action@v1.18.0
+        with:
+          # For posting a rich message using Block Kit
+          payload: |
+              {
+                  "blocks": [
+                      {
+                          "type": "section",
+                          "text": {
+                          "type": "mrkdwn",
+                          "text": ":warning: [PLEASE IGNORE, TESTING] *Oops!* Found ${{ needs.log-variable.outputs.failures }} integration test fail(s) on Cypress. :pleading_face:"
+                          }
+                      },
+                      {
+                          "type": "divider"
+                      },
+                      {
+                          "type": "context",
+                          "elements": [
+                              {
+                                  "type": "mrkdwn",
+                                  "text": ":technologist::skin-tone-2: *Commit by* ${{ github.event.pull_request.user.login }} from *Pull Request*: *<${{ github.server_url }}/${{ github.repository }}/pull/${{ steps.get-pr-details.outputs.pull-request-number }}|${{ github.event.pull_request.title }}>*"
+                              }
+                          ]
+                      }
+                  ],
+                  "attachments": [
+                      {
+                          "color": "#FF0000",
+                          "blocks": [
+                              {
+                                  "type": "section",
+                                  "text": {
+                                  "type": "mrkdwn",
+                                  "text": "Please check this out. :pray:"
+                                  }
+                              },
+                              {
+                                  "type": "context",
+                                  "elements": [
+                                      {
+                                          "type": "mrkdwn",
+                                          "text": ":test_tube:*TEST*: User can create LOs (example #1) (showing 1 out of 2 tests failing) \n:open_file_folder:*FILE*: <https://cypress-dashboard.staging.***.io:31600/instance/76cc174f-0fc4-46bb-9e48-b875aebbcb71 | cypress/integration/cms/LO_create.feature> \n:speech_balloon:*MESSAGE*: AssertionError: Timed out retrying after 20000ms: Expected to find content: 'fail' within the element: [ <li.MuiButtonBase-root.MuiListItem-root.MuiMenuItem-root.MuiMenuItem-gutters.MuiListItem-gutters.MuiListItem-button.Mui-focusVisible.Mui-focusVisible>, 4 more... ] but never did. \n \n"
+                                      }
+                                  ]
+                              },
+                              {
+                                  "type": "divider"
+                              },
+                              {
+                                  "type": "context",
+                                  "elements": [
+                                      {
+                                          "type": "mrkdwn",
+                                          "text": "more info: <${{ github.server_url }}/${{ github.repository }}/commit/${{ github.event.pull_request.head.sha }}|from commit> | <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|from workflow> | <https://cypress-dashboard.staging.manabie.io:31600/runs | cypress dashboard>"
+                                      }
+                                  ]
+                              }
+                          ]
+                      }
+                  ]
+              }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
