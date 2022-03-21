@@ -69,9 +69,6 @@ jobs:
       - log-variable
     
     steps:
-    
-      - uses: actions/checkout@v2
-      
       - name: Check variable
         id: check-variable
         run: |
