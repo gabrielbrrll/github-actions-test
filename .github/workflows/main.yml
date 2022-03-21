@@ -43,7 +43,7 @@ jobs:
       - name: Check variable
         id: check-variable
         run: |
-          search_dir=./
+          search_dir=./.github/workflows
           for entry in "$search_dir"/*
           do
             echo "$entry"
