@@ -50,6 +50,656 @@
                 "message": "CypressError: sync skip; aborting execution",
                 "estack": "[object Object]\nFrom Your Spec Code:\n    at Context.eval (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/book_duplicate.feature:21710:10)",
                 "diff": null
+              },
+              "uuid": "9a4b809d-3615-4f5e-9c07-32154c767302",
+              "parentUUID": "296875be-ebcd-4028-83d9-acf72371a65c",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [
+            "9a4b809d-3615-4f5e-9c07-32154c767302"
+          ],
+          "duration": 758,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "5cb2cc5e-46c2-4602-90c7-9c87071d4e1f",
+      "title": "",
+      "fullFile": "cypress/integration/cms/chapter_create.feature",
+      "file": "cypress/integration/cms/chapter_create.feature",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "bf8b81bf-968c-44e3-a157-55ba297d1146",
+          "title": "Create a chapter",
+          "fullFile": "cypress/integration/cms/chapter_create.feature",
+          "file": "cypress/integration/cms/chapter_create.feature",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "User can create a chapter in an empty book",
+              "fullTitle": "Create a chapter User can create a chapter in an empty book",
+              "timedOut": null,
+              "duration": 700,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// register this scenario with the cucumber data collector\n// but don't run it\n// Tell mocha this is a skipped test so it also shows correctly in Cypress\nconst state = window.testState;\ncy.then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() => state.onFinishScenario(scenario))\n  // eslint-disable-next-line func-names\n  .then(function () {\n    return this.skip();\n  });",
+              "err": {
+                "message": "CypressError: sync skip; aborting execution",
+                "estack": "[object Object]\nFrom Your Spec Code:\n    at Context.eval (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/chapter_create.feature:21621:10)",
+                "diff": null
+              },
+              "uuid": "9b551d02-bab8-47f6-a063-e8e8c6df097a",
+              "parentUUID": "bf8b81bf-968c-44e3-a157-55ba297d1146",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "User can create a chapter in a book has chapters",
+              "fullTitle": "Create a chapter User can create a chapter in a book has chapters",
+              "timedOut": null,
+              "duration": 527,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// register this scenario with the cucumber data collector\n// but don't run it\n// Tell mocha this is a skipped test so it also shows correctly in Cypress\nconst state = window.testState;\ncy.then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() => state.onFinishScenario(scenario))\n  // eslint-disable-next-line func-names\n  .then(function () {\n    return this.skip();\n  });",
+              "err": {
+                "message": "CypressError: sync skip; aborting execution",
+                "estack": "[object Object]\nFrom Your Spec Code:\n    at Context.eval (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/chapter_create.feature:21621:10)",
+                "diff": null
+              },
+              "uuid": "cbd526de-c4c6-4bd2-acaf-d3dfc9487424",
+              "parentUUID": "bf8b81bf-968c-44e3-a157-55ba297d1146",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "User cannot create chapters (example #1)",
+              "fullTitle": "Create a chapter User cannot create chapters (example #1)",
+              "timedOut": null,
+              "duration": 643,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// register this scenario with the cucumber data collector\n// but don't run it\n// Tell mocha this is a skipped test so it also shows correctly in Cypress\nconst state = window.testState;\ncy.then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() => state.onFinishScenario(scenario))\n  // eslint-disable-next-line func-names\n  .then(function () {\n    return this.skip();\n  });",
+              "err": {
+                "message": "CypressError: sync skip; aborting execution",
+                "estack": "[object Object]\nFrom Your Spec Code:\n    at Context.eval (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/chapter_create.feature:21621:10)",
+                "diff": null
+              },
+              "uuid": "2b93915f-12f7-40f4-8d59-776625a5e94f",
+              "parentUUID": "bf8b81bf-968c-44e3-a157-55ba297d1146",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [
+            "9b551d02-bab8-47f6-a063-e8e8c6df097a",
+            "cbd526de-c4c6-4bd2-acaf-d3dfc9487424",
+            "2b93915f-12f7-40f4-8d59-776625a5e94f"
+          ],
+          "duration": 1870,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "76a3cf96-c732-4d58-8598-3b7b8eb62862",
+      "title": "",
+      "fullFile": "cypress/integration/cms/course_create.feature",
+      "file": "cypress/integration/cms/course_create.feature",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "ba9decaf-e611-4ccf-9c8a-f4392073d7c8",
+          "title": "user creates course",
+          "fullFile": "cypress/integration/cms/course_create.feature",
+          "file": "cypress/integration/cms/course_create.feature",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "user can create course",
+              "fullTitle": "user creates course user can create course",
+              "timedOut": null,
+              "duration": 639,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// register this scenario with the cucumber data collector\n// but don't run it\n// Tell mocha this is a skipped test so it also shows correctly in Cypress\nconst state = window.testState;\ncy.then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() => state.onFinishScenario(scenario))\n  // eslint-disable-next-line func-names\n  .then(function () {\n    return this.skip();\n  });",
+              "err": {
+                "message": "CypressError: sync skip; aborting execution",
+                "estack": "[object Object]\nFrom Your Spec Code:\n    at Context.eval (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/course_create.feature:21590:10)",
+                "diff": null
+              },
+              "uuid": "bf210caf-2c2b-4dd0-a6f2-06c5cc235b8a",
+              "parentUUID": "ba9decaf-e611-4ccf-9c8a-f4392073d7c8",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "user cannot create course (example #1)",
+              "fullTitle": "user creates course user cannot create course (example #1)",
+              "timedOut": null,
+              "duration": 568,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// register this scenario with the cucumber data collector\n// but don't run it\n// Tell mocha this is a skipped test so it also shows correctly in Cypress\nconst state = window.testState;\ncy.then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() => state.onFinishScenario(scenario))\n  // eslint-disable-next-line func-names\n  .then(function () {\n    return this.skip();\n  });",
+              "err": {
+                "message": "CypressError: sync skip; aborting execution",
+                "estack": "[object Object]\nFrom Your Spec Code:\n    at Context.eval (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/course_create.feature:21590:10)",
+                "diff": null
+              },
+              "uuid": "ed7765e2-00bd-444b-b9f5-0187c4057519",
+              "parentUUID": "ba9decaf-e611-4ccf-9c8a-f4392073d7c8",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [
+            "bf210caf-2c2b-4dd0-a6f2-06c5cc235b8a",
+            "ed7765e2-00bd-444b-b9f5-0187c4057519"
+          ],
+          "duration": 1207,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "532448f3-d013-43f8-afd0-a47dd02ec537",
+      "title": "",
+      "fullFile": "cypress/integration/cms/course_study_plan_delete.feature",
+      "file": "cypress/integration/cms/course_study_plan_delete.feature",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "74af4750-d0e0-4b45-b0d3-ef84016663ca",
+          "title": "Delete a study plan under course",
+          "fullFile": "cypress/integration/cms/course_study_plan_delete.feature",
+          "file": "cypress/integration/cms/course_study_plan_delete.feature",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "User can delete course study plan",
+              "fullTitle": "Delete a study plan under course User can delete course study plan",
+              "timedOut": null,
+              "duration": 910,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// register this scenario with the cucumber data collector\n// but don't run it\n// Tell mocha this is a skipped test so it also shows correctly in Cypress\nconst state = window.testState;\ncy.then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() => state.onFinishScenario(scenario))\n  // eslint-disable-next-line func-names\n  .then(function () {\n    return this.skip();\n  });",
+              "err": {
+                "message": "CypressError: sync skip; aborting execution",
+                "estack": "[object Object]\nFrom Your Spec Code:\n    at Context.eval (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/course_study_plan_delete.feature:21603:10)",
+                "diff": null
+              },
+              "uuid": "879f4549-0065-45c3-8e01-179c18bf5323",
+              "parentUUID": "74af4750-d0e0-4b45-b0d3-ef84016663ca",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [
+            "879f4549-0065-45c3-8e01-179c18bf5323"
+          ],
+          "duration": 910,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "de116945-aac6-4b7f-b5ae-6241df5f770a",
+      "title": "",
+      "fullFile": "cypress/integration/cms/LO_create.feature",
+      "file": "cypress/integration/cms/LO_create.feature",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "f4df6920-ad00-4f84-851d-914249708827",
+          "title": "Create a LO",
+          "fullFile": "cypress/integration/cms/LO_create.feature",
+          "file": "cypress/integration/cms/LO_create.feature",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "User can create LOs (example #1)",
+              "fullTitle": "Create a LO User can create LOs (example #1)",
+              "timedOut": null,
+              "duration": 38173,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const state = window.testState;\nreturn cy\n  .then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() =>\n    resolveAndRunBeforeHooks.call(this, scenario.tags, state.feature.name)\n  )\n  .then(() =>\n    indexedSteps.forEach((step) =>\n      stepTest.call(this, state, step, rowData)\n    )\n  )\n  .then(() =>\n    resolveAndRunAfterHooks.call(this, scenario.tags, state.feature.name)\n  )\n  .then(() => state.onFinishScenario(scenario));",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 20000ms: Expected to find content: 'fail' within the element: [ <li.MuiButtonBase-root.MuiListItem-root.MuiMenuItem-root.MuiMenuItem-gutters.MuiListItem-gutters.MuiListItem-button.Mui-focusVisible.Mui-focusVisible>, 4 more... ] but never did.",
+                "estack": "AssertionError: Timed out retrying after 20000ms: Expected to find content: 'fail' within the element: [ <li.MuiButtonBase-root.MuiListItem-root.MuiMenuItem-root.MuiMenuItem-gutters.MuiListItem-gutters.MuiListItem-button.Mui-focusVisible.Mui-focusVisible>, 4 more... ] but never did.\n    at selectWithoutSearch (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/LO_create.feature:1729:43)\n    at selectAndFillLOData (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/LO_create.feature:87:40)\n    at Context.eval (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/LO_create.feature:1919:36)\n    at Context.resolveAndRunStepDefinition (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/LO_create.feature:22192:29)\n    at Context.eval (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/LO_create.feature:21534:35)",
+                "diff": null
+              },
+              "uuid": "1bbabca2-a16a-44cb-8423-49ccf59a9f01",
+              "parentUUID": "f4df6920-ad00-4f84-851d-914249708827",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "User cannot create a LO because required field \"type\" is empty (example #1)",
+              "fullTitle": "Create a LO User cannot create a LO because required field \"type\" is empty (example #1)",
+              "timedOut": null,
+              "duration": 15219,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const state = window.testState;\nreturn cy\n  .then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() =>\n    resolveAndRunBeforeHooks.call(this, scenario.tags, state.feature.name)\n  )\n  .then(() =>\n    indexedSteps.forEach((step) =>\n      stepTest.call(this, state, step, rowData)\n    )\n  )\n  .then(() =>\n    resolveAndRunAfterHooks.call(this, scenario.tags, state.feature.name)\n  )\n  .then(() => state.onFinishScenario(scenario));",
+              "err": {},
+              "uuid": "cc34655e-1bdf-4167-b854-980849e9f9cc",
+              "parentUUID": "f4df6920-ad00-4f84-851d-914249708827",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "User cannot create a LO because required field \"fail\" is empty (example #2)",
+              "fullTitle": "Create a LO User cannot create a LO because required field \"fail\" is empty (example #2)",
+              "timedOut": null,
+              "duration": 42286,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const state = window.testState;\nreturn cy\n  .then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() =>\n    resolveAndRunBeforeHooks.call(this, scenario.tags, state.feature.name)\n  )\n  .then(() =>\n    indexedSteps.forEach((step) =>\n      stepTest.call(this, state, step, rowData)\n    )\n  )\n  .then(() =>\n    resolveAndRunAfterHooks.call(this, scenario.tags, state.feature.name)\n  )\n  .then(() => state.onFinishScenario(scenario));",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 20000ms: Expected to find element: `.MuiFormHelperText-root`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 20000ms: Expected to find element: `.MuiFormHelperText-root`, but never found it.\n    at assertErrorHelperText (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/LO_create.feature:1104:39)\n    at Context.eval (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/LO_create.feature:69:45)\n    at Context.resolveAndRunStepDefinition (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/LO_create.feature:22192:29)\n    at Context.eval (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/LO_create.feature:21534:35)",
+                "diff": null
+              },
+              "uuid": "e8391d2f-c7ac-4743-9ac6-c7bb04f8da33",
+              "parentUUID": "f4df6920-ad00-4f84-851d-914249708827",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "cc34655e-1bdf-4167-b854-980849e9f9cc"
+          ],
+          "failures": [
+            "1bbabca2-a16a-44cb-8423-49ccf59a9f01",
+            "e8391d2f-c7ac-4743-9ac6-c7bb04f8da33"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 95678,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "b112f9ee-db19-4d99-90c4-e52968d64d5f",
+      "title": "",
+      "fullFile": "cypress/integration/cms/topic_update.feature",
+      "file": "cypress/integration/cms/topic_update.feature",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "ba309006-0210-4c29-8bd8-bfa765ad07dd",
+          "title": "Edit a topic successfully",
+          "fullFile": "cypress/integration/cms/topic_update.feature",
+          "file": "cypress/integration/cms/topic_update.feature",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "User can update topic",
+              "fullTitle": "Edit a topic successfully User can update topic",
+              "timedOut": null,
+              "duration": 530,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// register this scenario with the cucumber data collector\n// but don't run it\n// Tell mocha this is a skipped test so it also shows correctly in Cypress\nconst state = window.testState;\ncy.then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() => state.onFinishScenario(scenario))\n  // eslint-disable-next-line func-names\n  .then(function () {\n    return this.skip();\n  });",
+              "err": {
+                "message": "CypressError: sync skip; aborting execution",
+                "estack": "[object Object]\nFrom Your Spec Code:\n    at Context.eval (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/topic_update.feature:21615:10)",
+                "diff": null
+              },
+              "uuid": "c3235f7e-4929-4072-9c51-3409541fa885",
+              "parentUUID": "ba309006-0210-4c29-8bd8-bfa765ad07dd",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "User can not update topic (example #1)",
+              "fullTitle": "Edit a topic successfully User can not update topic (example #1)",
+              "timedOut": null,
+              "duration": 662,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// register this scenario with the cucumber data collector\n// but don't run it\n// Tell mocha this is a skipped test so it also shows correctly in Cypress\nconst state = window.testState;\ncy.then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() => state.onFinishScenario(scenario))\n  // eslint-disable-next-line func-names\n  .then(function () {\n    return this.skip();\n  });",
+              "err": {
+                "message": "CypressError: sync skip; aborting execution",
+                "estack": "[object Object]\nFrom Your Spec Code:\n    at Context.eval (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/topic_update.feature:21615:10)",
+                "diff": null
+              },
+              "uuid": "0c4a53b4-efcd-47d7-9610-cb306a59f78e",
+              "parentUUID": "ba309006-0210-4c29-8bd8-bfa765ad07dd",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [
+            "c3235f7e-4929-4072-9c51-3409541fa885",
+            "0c4a53b4-efcd-47d7-9610-cb306a59f78e"
+          ],
+          "duration": 1192,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "ff043661-d459-474e-8fb8-bb4c57301c94",
+      "title": "",
+      "fullFile": "cypress/integration/MUI-v5/login-forgot-page.feature",
+      "file": "cypress/integration/MUI-v5/login-forgot-page.feature",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "68f01558-3324-4a17-bac2-b904adf01456",
+          "title": "Visual comparisons for login and forgot page",
+          "fullFile": "cypress/integration/MUI-v5/login-forgot-page.feature",
+          "file": "cypress/integration/MUI-v5/login-forgot-page.feature",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Visual comparisons for login and forgot page",
+              "fullTitle": "Visual comparisons for login and forgot page Visual comparisons for login and forgot page",
+              "timedOut": null,
+              "duration": 724,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// register this scenario with the cucumber data collector\n// but don't run it\n// Tell mocha this is a skipped test so it also shows correctly in Cypress\nconst state = window.testState;\ncy.then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() => state.onFinishScenario(scenario))\n  // eslint-disable-next-line func-names\n  .then(function () {\n    return this.skip();\n  });",
+              "err": {
+                "message": "CypressError: sync skip; aborting execution",
+                "estack": "[object Object]\nFrom Your Spec Code:\n    at Context.eval (http://localhost:3001/__cypress/tests?p=cypress/integration/MUI-v5/login-forgot-page.feature:21563:10)",
+                "diff": null
+              },
+              "uuid": "d9b23b42-2d68-4c5f-8f35-e5fda66deb0a",
+              "parentUUID": "68f01558-3324-4a17-bac2-b904adf01456",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [
+            "d9b23b42-2d68-4c5f-8f35-e5fda66deb0a"
+          ],
+          "duration": 724,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "ce420708-bc13-4688-a3b6-3cf4c724e902",
+      "title": "",
+      "fullFile": "cypress/integration/cms/assignment_delete.feature",
+      "file": "cypress/integration/cms/assignment_delete.feature",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "67d037d8-3c12-4e19-8603-c2e192f4b830",
+          "title": "Delete an assignment under topics",
+          "fullFile": "cypress/integration/cms/assignment_delete.feature",
+          "file": "cypress/integration/cms/assignment_delete.feature",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "User can delete an assignment (example #1)",
+              "fullTitle": "Delete an assignment under topics User can delete an assignment (example #1)",
+              "timedOut": null,
+              "duration": 690,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// register this scenario with the cucumber data collector\n// but don't run it\n// Tell mocha this is a skipped test so it also shows correctly in Cypress\nconst state = window.testState;\ncy.then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() => state.onFinishScenario(scenario))\n  // eslint-disable-next-line func-names\n  .then(function () {\n    return this.skip();\n  });",
+              "err": {
+                "message": "CypressError: sync skip; aborting execution",
+                "estack": "[object Object]\nFrom Your Spec Code:\n    at Context.eval (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/assignment_delete.feature:21620:10)",
+                "diff": null
+              },
+              "uuid": "40a62a4a-d2a7-41a8-be5c-34f328e3c2ab",
+              "parentUUID": "67d037d8-3c12-4e19-8603-c2e192f4b830",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "User can delete an assignment (example #2)",
+              "fullTitle": "Delete an assignment under topics User can delete an assignment (example #2)",
+              "timedOut": null,
+              "duration": 759,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// register this scenario with the cucumber data collector\n// but don't run it\n// Tell mocha this is a skipped test so it also shows correctly in Cypress\nconst state = window.testState;\ncy.then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() => state.onFinishScenario(scenario))\n  // eslint-disable-next-line func-names\n  .then(function () {\n    return this.skip();\n  });",
+              "err": {
+                "message": "CypressError: sync skip; aborting execution",
+                "estack": "[object Object]\nFrom Your Spec Code:\n    at Context.eval (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/assignment_delete.feature:21620:10)",
+                "diff": null
+              },
+              "uuid": "416634b5-b855-426f-aea1-a0874cc6591b",
+              "parentUUID": "67d037d8-3c12-4e19-8603-c2e192f4b830",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "User can not delete an assignment",
+              "fullTitle": "Delete an assignment under topics User can not delete an assignment",
+              "timedOut": null,
+              "duration": 711,
+              "state": "pending",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// register this scenario with the cucumber data collector\n// but don't run it\n// Tell mocha this is a skipped test so it also shows correctly in Cypress\nconst state = window.testState;\ncy.then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() => state.onFinishScenario(scenario))\n  // eslint-disable-next-line func-names\n  .then(function () {\n    return this.skip();\n  });",
+              "err": {
+                "message": "CypressError: sync skip; aborting execution",
+                "estack": "[object Object]\nFrom Your Spec Code:\n    at Context.eval (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/assignment_delete.feature:21620:10)",
+                "diff": null
+              },
+              "uuid": "fd1bb999-c1dc-40fa-8e0f-be5a2459872c",
+              "parentUUID": "67d037d8-3c12-4e19-8603-c2e192f4b830",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [
+            "40a62a4a-d2a7-41a8-be5c-34f328e3c2ab",
+            "416634b5-b855-426f-aea1-a0874cc6591b",
+            "fd1bb999-c1dc-40fa-8e0f-be5a2459872c"
+          ],
+          "duration": 2160,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
       "options": {
         "quiet": false,
         "reportFilename": "mochawesome",
