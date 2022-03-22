@@ -34,14 +34,14 @@ jobs:
           full_report=""
           limit=3
 
-          failures=`cat index.json | jq ".stats.failures"`
+          total_fails=`cat index.json | jq ".stats.failures"`
 
           jq -c '.results[].suites[]' index.json | while read -r i && [[ $limit != 0 ]]; do
               title=$(echo "$i" | jq '.tests[0].title')
               file=$(echo "$i" | jq '.fullFile')
               message=$(echo "$i" | jq '.tests[0].err.message')
               run_id=$(echo "$i" | jq '.uuid')
-              fails=$i
+              fails=$(echo "$i" | jq '.failures')
 
               echo "$fails +++FAIL COUNT"
 
@@ -52,7 +52,7 @@ jobs:
 
              
               full_report=$(echo ${full_report//$'\n'/'%0A'} | sed 's/"//g')
-              echo "::set-output name=fail_count::$failures"
+              echo "::set-output name=fail_count::$total_fails"
               echo "::set-output name=fail_report::$full_report"
           done
           else
