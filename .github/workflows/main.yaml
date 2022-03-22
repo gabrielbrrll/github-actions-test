@@ -1,0 +1,142 @@
+name: CI
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Greeting
+        run: echo "Hello, world!"
+
+      - name: Another greeting
+        run: echo "Hello, world!"
+
+  log-variable:
+    runs-on: ubuntu-latest
+    outputs:
+      failures: ${{ steps.set-variable.outputs.fail_count }}
+      report: ${{ steps.set-variable.outputs.fail_report }}
+      report_1: ${{ steps.set-variable.outputs.fail_report_1 }}
+      report_2: ${{ steps.set-variable.outputs.fail_report_2 }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set variable
+        id: set-variable
+        run: |
+          if [ -f "index.json" ] 
+          then
+          full_report=""
+          limit=3
+          failures=`cat index.json | jq ".stats.failures"`
+          jq -c '.results[].suites[]' index.json | while read -r i && [[ "$limit" != 0 ]]; do
+            fail_count=$(echo "$i" | jq '.failures | length')
+            echo "$fail_count +++FAIL COUNT+++"
+            if [[ $fail_count -gt 0 ]]; then
+              ((limit--))
+              title=$(echo "$i" | jq '.tests[0].title')
+              file=$(echo "$i" | jq '.fullFile')
+              message=$(echo "$i" | jq '.tests[0].err.message')
+              run_id=$(echo "$i" | jq '.uuid')
+              if [[ $fail_count -gt 1 ]]; then
+                  title+=" (showing 1 out of $fail_count tests failing"
+              fi
+              report=$(echo ":test_tube:*TEST*: $title \n:open_file_folder:*FILE*: <https://cypress-dashboard.staging.manabie.io:31600/instance/$run_id | $file> \n:speech_balloon:*MESSAGE*: $message \n")
+              full_report+="$report \n"
+              if [[ $limit == 0 ]]; then
+                  full_report+="...showing 3 of ${failures} test suite fails"
+              fi
+            fi
+            full_report=$(echo ${full_report//$'\n'/'%0A'} | sed 's/"//g')
+            echo "::set-output name=fail_count::"${failures}""
+            echo "::set-output name=fail_report::$full_report"
+            echo $full_report
+          done
+          else
+              echo "No Failed Tests"
+          fi
+
+  slack-reporter:
+    runs-on: ubuntu-latest
+    needs:
+      - build
+      - log-variable
+
+    steps:
+      - name: Check variable
+        id: check-variable
+        run: |
+          echo "${{ needs.log-variable.outputs.report }} FAILLL REPORT"
+
+      - name: Send custom JSON data to Slack workflow
+        id: slack
+        uses: slackapi/slack-github-action@v1.18.0
+        with:
+          # For posting a rich message using Block Kit
+          payload: |
+            {
+                "blocks": [
+                    {
+                        "type": "section",
+                        "text": {
+                        "type": "mrkdwn",
+                        "text": ":warning: [PLEASE IGNORE, TESTING] *Oops!* Found ${{ needs.log-variable.outputs.failures }} integration test fail(s) on Cypress. :pleading_face:"
+                        }
+                    },
+                    {
+                        "type": "divider"
+                    },
+                    {
+                        "type": "context",
+                        "elements": [
+                            {
+                                "type": "mrkdwn",
+                                "text": ":technologist::skin-tone-2: *Commit by* ${{ github.event.pull_request.user.login }} from *Pull Request*: *<${{ github.server_url }}/${{ github.repository }}/pull/${{ steps.get-pr-details.outputs.pull-request-number }}|${{ github.event.pull_request.title }}>*"
+                            }
+                        ]
+                    }
+                ],
+                "attachments": [
+                    {
+                        "color": "#FF0000",
+                        "blocks": [
+                            {
+                                "type": "section",
+                                "text": {
+                                "type": "mrkdwn",
+                                "text": "Please check this out. :pray:"
+                                }
+                            },
+                            {
+                                "type": "context",
+                                "elements": [
+                                    {
+                                        "type": "mrkdwn",
+                                        "text": ":test_tube:*TEST*: User can create LOs (example #1) (showing 1 out of 2 tests failing) \n:open_file_folder:*FILE*: <https://cypress-dashboard.staging.***.io:31600/instance/76cc174f-0fc4-46bb-9e48-b875aebbcb71 | cypress/integration/cms/LO_create.feature> \n:speech_balloon:*MESSAGE*: AssertionError: Timed out retrying after 20000ms: Expected to find content: 'fail' within the element: [ <li.MuiButtonBase-root.MuiListItem-root.MuiMenuItem-root.MuiMenuItem-gutters.MuiListItem-gutters.MuiListItem-button.Mui-focusVisible.Mui-focusVisible>, 4 more... ] but never did. \n \n"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "divider"
+                            },
+                            {
+                                "type": "context",
+                                "elements": [
+                                    {
+                                        "type": "mrkdwn",
+                                        "text": "more info: <${{ github.server_url }}/${{ github.repository }}/commit/${{ github.event.pull_request.head.sha }}|from commit> | <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|from workflow> | <https://cypress-dashboard.staging.manabie.io:31600/runs | cypress dashboard>"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
