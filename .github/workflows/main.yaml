@@ -72,6 +72,7 @@ jobs:
       - name: Check variable
         id: check-variable
         run: |
+          echo $PWD
           echo "${{ needs.log-variable.outputs.failures }} - +++FAILURESSS"
           echo "${{ needs.log-variable.outputs.report }} - +++REPORT"
           echo "${{ needs.log-variable.outputs.report_1 }} - +++REPORT 1"
