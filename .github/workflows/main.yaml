@@ -68,12 +68,9 @@ jobs:
         id: check-variable
         run: |
           echo "${{ needs.log-variable.outputs.failures }} - +++FAILURESSS"
-          echo "${{ needs.log-variable.report }} - +++REPORT"
-          echo "${{ needs.log-variable.report_1 }} - +++REPORT 1"
-          echo "${{ needs.log-variable.report_2 }} - +++REPORT 2"
-          echo "${{ needs.log-variable }} - +++REPORT 3"
-          echo "${{ needs.log-variable }} - +++REPORT 4"
-          echo "${{ needs.log-variable }} - +++REPORT 5"
+          echo "${{ needs.log-variable.outputs.report }} - +++REPORT"
+          echo "${{ needs.log-variable.outputs.report_1 }} - +++REPORT 1"
+          echo "${{ needs.log-variable.outputs.report_2 }} - +++REPORT 2"
           pull_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
           echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
           echo "::set-output name=pull-request-number::"${pull_number}"" 
