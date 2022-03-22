@@ -56,6 +56,11 @@ jobs:
           else
             echo "No Failed Tests"
           fi
+          
+      - name: Check report
+        id: check-report
+        run: |
+          echo "${{ steps.set-variable.outputs.fail_report }} - +++FAILURESSS"
 
   slack-reporter:
     runs-on: ubuntu-latest
