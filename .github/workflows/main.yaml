@@ -37,9 +37,8 @@ jobs:
           total_fails=`cat index.json | jq ".stats.failures"`
           
           fail_results=`cat index.json | jq -c '.results[].suites[] | select(.failures | length > 0)'`
-          echo "$fail_results FAIL RESULTS"
 
-          jq -c '.results[].suites[]' index.json | while read -r i && [[ $limit != 0 ]]; do
+          jq -c "$fail_results" index.json | while read -r i && [[ $limit != 0 ]]; do
               title=$(echo "$i" | jq '.tests[0].title')
               file=$(echo "$i" | jq '.fullFile')
               message=$(echo "$i" | jq '.tests[0].err.message')
