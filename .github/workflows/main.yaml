@@ -35,21 +35,20 @@ jobs:
           limit=3
 
           total_fails=`cat index.json | jq ".stats.failures"`
+          
+          fail_results=`cat index.json | jq -c '.results[].suites[] | select(.failures | length > 0)'`
+          echo "$fail_results FAIL RESULTS"
 
           jq -c '.results[].suites[]' index.json | while read -r i && [[ $limit != 0 ]]; do
               title=$(echo "$i" | jq '.tests[0].title')
               file=$(echo "$i" | jq '.fullFile')
               message=$(echo "$i" | jq '.tests[0].err.message')
               run_id=$(echo "$i" | jq '.uuid')
-              fails=$(echo "$i" | jq '.failures')
-
-              echo "$fails +++FAIL COUNT"
 
               report=$(echo ":test_tube:*TEST*: $title \n:open_file_folder:*FILE*: <https://cypress-dashboard.staging.manabie.io:31600/instance/$run_id | $file> \n:speech_balloon:*MESSAGE*: $message \n")
 
               full_report+="$report /n"
               ((limit--))
-
              
               full_report=$(echo ${full_report//$'\n'/'%0A'} | sed 's/"//g')
               echo "::set-output name=fail_count::$total_fails"
