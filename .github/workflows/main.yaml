@@ -35,7 +35,7 @@ jobs:
           limit=3
 
           total_fails=`cat index.json | jq ".stats.failures"`
-          
+
           fail_results=`cat index.json | jq -c '.results[].suites[] | select(.failures | length > 0)'`
 
           jq -c "$fail_results" index.json | while read -r i && [[ $limit != 0 ]]; do
@@ -56,7 +56,7 @@ jobs:
           else
             echo "No Failed Tests"
           fi
-          
+
       - name: Check report
         id: check-report
         run: |
@@ -78,72 +78,14 @@ jobs:
           echo "${{ needs.log-variable.outputs.report_2 }} - +++REPORT 2"
           pull_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
           echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-          echo "::set-output name=pull-request-number::"${pull_number}"" 
+          echo "::set-output name=pull-request-number::"${pull_number}""
 
       - name: Send custom JSON data to Slack workflow
         id: slack
         uses: slackapi/slack-github-action@v1.18.0
         with:
           # For posting a rich message using Block Kit
-          payload: |
-            {
-                "blocks": [
-                    {
-                        "type": "section",
-                        "text": {
-                        "type": "mrkdwn",
-                        "text": ":warning: [PLEASE IGNORE, TESTING] *Oops!* Found ${{ needs.log-variable.outputs.failures }} integration test fail(s) on Cypress. :pleading_face:"
-                        }
-                    },
-                    {
-                        "type": "divider"
-                    },
-                    {
-                        "type": "context",
-                        "elements": [
-                            {
-                                "type": "mrkdwn",
-                                "text": ":technologist::skin-tone-2: *Commit by* ${{ github.event.pull_request.user.login }} from *Pull Request*: *<${{ github.server_url }}/${{ github.repository }}/pull/${{ steps.get-pr-details.outputs.pull-request-number }}|${{ github.event.pull_request.title }}>*"
-                            }
-                        ]
-                    }
-                ],
-                "attachments": [
-                    {
-                        "color": "#FF0000",
-                        "blocks": [
-                            {
-                                "type": "section",
-                                "text": {
-                                "type": "mrkdwn",
-                                "text": "Please check this out. :pray:"
-                                }
-                            },
-                            {
-                                "type": "context",
-                                "elements": [
-                                    {
-                                        "type": "mrkdwn",
-                                        "text": "${{ needs.log-variable.outputs.report }}"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "divider"
-                            },
-                            {
-                                "type": "context",
-                                "elements": [
-                                    {
-                                        "type": "mrkdwn",
-                                        "text": "more info: <${{ github.server_url }}/${{ github.repository }}/commit/${{ github.event.pull_request.head.sha }}|from commit> | <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|from workflow> | <https://cypress-dashboard.staging.manabie.io:31600/runs | cypress dashboard>"
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            }
+          payload-file-path: "./slack-payload.json"
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
