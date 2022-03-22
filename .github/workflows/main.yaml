@@ -41,7 +41,7 @@ jobs:
               file=$(echo "$i" | jq '.fullFile')
               message=$(echo "$i" | jq '.tests[0].err.message')
               run_id=$(echo "$i" | jq '.uuid')
-              fails=${{ i.failures }}
+              fails=$i
 
               echo "$fails +++FAIL COUNT"
 
