@@ -13,6 +13,8 @@ if [ -f "index.json" ]
     message=$(echo "$i" | jq '.tests[0].err.message')
     run_id=$(echo "$i" | jq '.uuid')
     
+    echo "$fail_count +++FAIL COUNT"
+    
     if [[ $fail_count -gt 1 ]]; then
         title+=" (showing 1 out of $fail_count tests failing"
     fi
