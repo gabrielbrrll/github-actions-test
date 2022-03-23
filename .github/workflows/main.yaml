@@ -38,7 +38,7 @@ jobs:
 
           # use this instead to represent workspace dir for local environment
           if [ "${GITHUB_WORKSPACE}" == "" ]; then
-            BASE_DIR=$(cd $(dirname $0)/../..; pwd)
+            BASE_DIR=$(pwd)
           else
             BASE_DIR="${GITHUB_WORKSPACE}"
           fi
