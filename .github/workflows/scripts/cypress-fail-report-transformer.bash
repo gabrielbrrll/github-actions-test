@@ -26,7 +26,6 @@ function generate_report(){
   local total_fails=`cat index.json | jq ".stats.failures"`
   local fail_results=`cat index.json | jq -c '.results[].suites[] | select(.failures | length > 0)'`
   local cypress_run_id=$(echo "${{ steps.run-integration.outputs.dashboardUrl }}" | sed 's:.*/::')
-  echo $fail_results
   jq -c "$fail_results" | while read -r i && [[ $limit != 0 ]]; do
     title=$(echo "$i" | jq '.tests[0].title')
     file=$(echo "$i" | jq '.fullFile')
