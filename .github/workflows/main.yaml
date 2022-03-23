@@ -62,7 +62,66 @@ jobs:
         uses: slackapi/slack-github-action@v1.18.0
         with:
           # For posting a rich message using Block Kit
-          payload-file-path: "./.github/workflows/slack-payload.json"
+          payload: |
+            {
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": ":warning: [PLEASE IGNORE, TESTING] *Oops!* Found ${{ needs.log-variable.outputs.failures }} integration test fail(s) on Cypress. :pleading_face:"
+                  }
+                },
+                {
+                  "type": "divider"
+                },
+                {
+                  "type": "context",
+                  "elements": [
+                    {
+                      "type": "mrkdwn",
+                      "text": ":technologist::skin-tone-2: *Commit by* ${{ github.event.pull_request.user.login }} from *Pull Request*: *<${{ github.server_url }}/${{ github.repository }}/pull/${{ steps.get-pr-details.outputs.pull-request-number }}|${{ github.event.pull_request.title }}>*"
+                    }
+                  ]
+                }
+              ],
+              "attachments": [
+                {
+                  "color": "#FF0000",
+                  "blocks": [
+                    {
+                      "type": "section",
+                      "text": {
+                        "type": "mrkdwn",
+                        "text": "Please check this out. :pray:"
+                      }
+                    },
+                    {
+                      "type": "context",
+                      "elements": [
+                        {
+                          "type": "mrkdwn",
+                          "text": "${{ needs.log-variable.outputs.report }}"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "divider"
+                    },
+                    {
+                      "type": "context",
+                      "elements": [
+                        {
+                          "type": "mrkdwn",
+                          "text": "more info: <${{ github.server_url }}/${{ github.repository }}/commit/${{ github.event.pull_request.head.sha }}|from commit> | <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|from workflow> | <https://cypress-dashboard.staging.manabie.io:31600/runs | cypress dashboard>"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
