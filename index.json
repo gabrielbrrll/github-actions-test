@@ -165,9 +165,9 @@
           ],
           "suites": [],
           "passes": [],
-          "skipped": [],
+          "failures": [],
           "pending": [],
-          "failures": [
+          "skipped": [
             "9b551d02-bab8-47f6-a063-e8e8c6df097a",
             "cbd526de-c4c6-4bd2-acaf-d3dfc9487424",
             "2b93915f-12f7-40f4-8d59-776625a5e94f"
@@ -251,9 +251,9 @@
           ],
           "suites": [],
           "passes": [],
-          "skipped": [],
+          "failures": [],
           "pending": [],
-          "failures": [
+          "skipped": [
             "bf210caf-2c2b-4dd0-a6f2-06c5cc235b8a",
             "ed7765e2-00bd-444b-b9f5-0187c4057519"
           ],
