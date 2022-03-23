@@ -418,10 +418,7 @@
           "passes": [
             "cc34655e-1bdf-4167-b854-980849e9f9cc"
           ],
-          "failures": [
-            "1bbabca2-a16a-44cb-8423-49ccf59a9f01",
-            "e8391d2f-c7ac-4743-9ac6-c7bb04f8da33"
-          ],
+          "failures": [],
           "pending": [],
           "skipped": [],
           "duration": 95678,
