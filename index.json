@@ -165,7 +165,7 @@
           ],
           "suites": [],
           "passes": [],
-          "failures": [],
+          "failures": ["9b551d02-bab8-47f6-a063-e8e8c6df097a"],
           "pending": [],
           "skipped": [
             "9b551d02-bab8-47f6-a063-e8e8c6df097a",
