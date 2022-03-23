@@ -43,7 +43,7 @@ function generate_report(){
 #     full_report=$(echo ${full_report//$'\n'/'%0A'} | sed 's/"//g')
 #     echo "::set-output name=fail_count::$total_fails"
 #     echo "::set-output name=fail_report::$full_report"
-  done
+#   done
 }
 
 pushd "${REPORT_DIR}"
