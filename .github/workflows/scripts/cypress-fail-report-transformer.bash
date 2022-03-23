@@ -29,7 +29,7 @@ function generate_report(){
   local cypress_run_id=$(echo "${{ steps.run-integration.outputs.dashboardUrl }}" | sed 's:.*/::')
   for result in $(echo "${fail_results}" | jq -r '.[] | @base64'); do
     _jq() {
-     echo ${row} | base64 --decode | jq -r ${1}
+      echo ${result} | base64 --decode | jq -r ${1}
     }
     echo $(_jq '.tests[0].title')
   done
