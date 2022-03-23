@@ -469,8 +469,8 @@
               "context": null,
               "code": "// register this scenario with the cucumber data collector\n// but don't run it\n// Tell mocha this is a skipped test so it also shows correctly in Cypress\nconst state = window.testState;\ncy.then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() => state.onFinishScenario(scenario))\n  // eslint-disable-next-line func-names\n  .then(function () {\n    return this.skip();\n  });",
               "err": {
-                "message": "CypressError: sync skip; aborting execution",
-                "estack": "[object Object]\nFrom Your Spec Code:\n    at Context.eval (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/topic_update.feature:21615:10)",
+                "message": "AssertionError: Timed out retrying after 20000ms: Expected to find element: `.MuiFormHelperText-root`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 20000ms: Expected to find element: `.MuiFormHelperText-root`, but never found it.\n    at assertErrorHelperText (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/LO_create.feature:1104:39)\n    at Context.eval (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/LO_create.feature:69:45)\n    at Context.resolveAndRunStepDefinition (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/LO_create.feature:22192:29)\n    at Context.eval (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/LO_create.feature:21534:35)",
                 "diff": null
               },
               "uuid": "c3235f7e-4929-4072-9c51-3409541fa885",
@@ -491,8 +491,8 @@
               "context": null,
               "code": "// register this scenario with the cucumber data collector\n// but don't run it\n// Tell mocha this is a skipped test so it also shows correctly in Cypress\nconst state = window.testState;\ncy.then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() => state.onFinishScenario(scenario))\n  // eslint-disable-next-line func-names\n  .then(function () {\n    return this.skip();\n  });",
               "err": {
-                "message": "CypressError: sync skip; aborting execution",
-                "estack": "[object Object]\nFrom Your Spec Code:\n    at Context.eval (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/topic_update.feature:21615:10)",
+                "message": "AssertionError: Timed out retrying after 20000ms: Expected to find element: `.MuiFormHelperText-root`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 20000ms: Expected to find element: `.MuiFormHelperText-root`, but never found it.\n    at assertErrorHelperText (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/LO_create.feature:1104:39)\n    at Context.eval (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/LO_create.feature:69:45)\n    at Context.resolveAndRunStepDefinition (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/LO_create.feature:22192:29)\n    at Context.eval (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/LO_create.feature:21534:35)",
                 "diff": null
               },
               "uuid": "0c4a53b4-efcd-47d7-9610-cb306a59f78e",
@@ -616,8 +616,8 @@
               "context": null,
               "code": "// register this scenario with the cucumber data collector\n// but don't run it\n// Tell mocha this is a skipped test so it also shows correctly in Cypress\nconst state = window.testState;\ncy.then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() => state.onFinishScenario(scenario))\n  // eslint-disable-next-line func-names\n  .then(function () {\n    return this.skip();\n  });",
               "err": {
-                "message": "CypressError: sync skip; aborting execution",
-                "estack": "[object Object]\nFrom Your Spec Code:\n    at Context.eval (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/assignment_delete.feature:21620:10)",
+                "message": "AssertionError: Timed out retrying after 20000ms: Expected to find element: `.MuiFormHelperText-root`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 20000ms: Expected to find element: `.MuiFormHelperText-root`, but never found it.\n    at assertErrorHelperText (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/LO_create.feature:1104:39)\n    at Context.eval (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/LO_create.feature:69:45)\n    at Context.resolveAndRunStepDefinition (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/LO_create.feature:22192:29)\n    at Context.eval (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/LO_create.feature:21534:35)",
                 "diff": null
               },
               "uuid": "40a62a4a-d2a7-41a8-be5c-34f328e3c2ab",
