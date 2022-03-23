@@ -55,8 +55,8 @@ jobs:
             local limit=3
             local failures=`cat ${REPORT_FILE} | jq ".stats.failures"`
 
-            total_fails=$(cat index.json | jq ".stats.failures")
-            fail_results=$(cat index.json | jq -c '.results[].suites[] | select(.failures | length > 0)')
+            total_fails=$(cat ${REPORT_FILE} | jq ".stats.failures")
+            fail_results=$(cat ${REPORT_FILE} | jq -c '.results[].suites[] | select(.failures | length > 0)')
             cypress_run_id=$(echo "${{ steps.run-integration.outputs.dashboardUrl }}" | sed 's:.*/::')
 
             jq -c "$fail_results" | while read -r i && [[ "$limit" != 0 ]]; do
