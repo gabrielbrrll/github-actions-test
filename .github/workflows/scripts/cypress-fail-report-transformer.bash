@@ -24,10 +24,10 @@ function generate_report(){
   local limit=3
   local failures=`cat ${REPORT_FILE} | jq ".stats.failures"`
   local total_fails=`cat ${REPORT_FILE} | jq ".stats.failures"`
-  local fail_results=`cat ${REPORT_FILE} | jq -c '[.results[].suites[] | select(.failures | length > 0)]'`
+  local fail_results=`cat ${REPORT_FILE} | jq -r '[.results[].suites[] | select(.failures | length > 0)]'`
   local cypress_run_id=$(echo "${{ steps.run-integration.outputs.dashboardUrl }}" | sed 's:.*/::')
   echo $fail_results
-  jq -r ".[]" ${fail_results} | while read -r i && [[ $limit != 0 ]]; do
+  jq -c ".[]" ${fail_results} | while read -r i && [[ $limit != 0 ]]; do
     echo "$i ++++"
 #     title=$(echo "$i" | jq '.tests[0].title')
 #     file=$(echo "$i" | jq '.fullFile')
