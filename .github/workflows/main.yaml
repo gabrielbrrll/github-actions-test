@@ -36,7 +36,7 @@ jobs:
 
           # use this instead to represent workspace dir for local environment
           if [ "${GITHUB_WORKSPACE}" == "" ]; then
-            BASE_DIR=$(pwd)
+            BASE_DIR=$(cd $(dirname $0)/../..; pwd)
           else
             BASE_DIR="${GITHUB_WORKSPACE}"
           fi
@@ -52,9 +52,9 @@ jobs:
             local full_report=""
             local limit=3
             local failures=`cat ${REPORT_FILE} | jq ".stats.failures"`
-            total_fails=`cat index.json | jq ".stats.failures"`
-            fail_results=`cat index.json | jq -c '.results[].suites[] | select(.failures | length > 0)'`
-            cypress_run_id=$(echo "${{ steps.run-integration.outputs.dashboardUrl }}" | sed 's:.*/::')
+            local total_fails=`cat index.json | jq ".stats.failures"`
+            local fail_results=`cat index.json | jq -c '.results[].suites[] | select(.failures | length > 0)'`
+            local cypress_run_id=$(echo "${{ steps.run-integration.outputs.dashboardUrl }}" | sed 's:.*/::')
             jq -c "$fail_results" index.json | while read -r i && [[ $limit != 0 ]]; do
               title=$(echo "$i" | jq '.tests[0].title')
               file=$(echo "$i" | jq '.fullFile')
