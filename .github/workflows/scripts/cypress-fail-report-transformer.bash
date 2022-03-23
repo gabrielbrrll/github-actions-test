@@ -27,8 +27,11 @@ function generate_report(){
 #   local fail_results=`cat ${REPORT_FILE} | jq -r '.results[].suites[] | select(.failures | length > 0)'`
   local fail_results=`cat $REPORT_FILE | jq -r '[.results[].suites[] | select(.failures | length > 0)']`
   local cypress_run_id=$(echo "${{ steps.run-integration.outputs.dashboardUrl }}" | sed 's:.*/::')
-  for result in $fail_results
-    echo $result
+  for result in $(echo "${fail_results}" | jq -r '.[] | @base64'); do
+    _jq() {
+     echo ${row} | base64 --decode | jq -r ${1}
+    }
+    echo $(_jq '.tests[0].title')
   done
   
 #   jq -c -r ".[]" ${fail_results} | while read -r i && [[ $limit != 0 ]]; do
