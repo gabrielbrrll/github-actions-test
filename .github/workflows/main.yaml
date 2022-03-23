@@ -67,6 +67,7 @@ jobs:
               echo $full_report
               echo "::set-output name=fail_count::$total_fails"
               echo "::set-output name=fail_report::$full_report"
+              echo $full_report
             done
           }
 
