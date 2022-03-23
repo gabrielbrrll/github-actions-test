@@ -28,7 +28,7 @@ function generate_report(){
   local cypress_run_id=$(echo "${{ steps.run-integration.outputs.dashboardUrl }}" | sed 's:.*/::')
   echo $fail_results
   while [ $limit -lt 3 ]; do
-    echo "${fail_results[$limit]}"
+    echo "${fail_results[$limit]} LIMITTT"
     ((limit++))
   done
 #   jq -c -r ".[]" ${fail_results} | while read -r i && [[ $limit != 0 ]]; do
