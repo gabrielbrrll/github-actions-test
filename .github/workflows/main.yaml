@@ -59,7 +59,8 @@ jobs:
             fail_results=$(cat ${REPORT_FILE} | jq -c '.results[].suites[] | select(.failures | length > 0)')
             cypress_run_id=$(echo "${{ steps.run-integration.outputs.dashboardUrl }}" | sed 's:.*/::')
 
-            jq -c "$fail_results" ${REPORT_FILE} | while read -r i && [[ "$limit" != 0 ]]; do
+            echo $(cat ${REPORT_FILE})
+            jq -c "${REPORT_FILE}" | while read -r i && [[ "$limit" != 0 ]]; do
               ((limit--))
               title=$(echo "$i" | jq '.tests[0].title')
               file=$(echo "$i" | jq '.fullFile')
