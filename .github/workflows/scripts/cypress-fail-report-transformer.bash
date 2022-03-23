@@ -24,29 +24,15 @@ function generate_report(){
   local limit=0
   local failures=`cat ${REPORT_FILE} | jq ".stats.failures"`
   local total_fails=`cat ${REPORT_FILE} | jq ".stats.failures"`
-#   local fail_results=`cat ${REPORT_FILE} | jq -r '.results[].suites[] | select(.failures | length > 0)'`
   local fail_results=`cat $REPORT_FILE | jq -r '[.results[].suites[] | select(.failures | length > 0)']`
   local cypress_run_id=$(echo "${{ steps.run-integration.outputs.dashboardUrl }}" | sed 's:.*/::')
   for result in $(echo "${fail_results}" | jq -r '.[] | @base64'); do
     _jq() {
       echo ${result} | base64 --decode | jq -r ${1}
     }
-    echo $(_jq '.tests[0].title')
+    title=$(_jq '.tests[0].title')
+    echo $title
   done
-  
-#   jq -c -r ".[]" ${fail_results} | while read -r i && [[ $limit != 0 ]]; do
-#     echo "$i ++++"
-#     title=$(echo "$i" | jq '.tests[0].title')
-#     file=$(echo "$i" | jq '.fullFile')
-#     message=$(echo "$i" | jq '.tests[0].err.message')
-#     run_id=$(echo "$i" | jq '.uuid')
-#     report=$(echo ":test_tube:*TEST*: $title \n:open_file_folder:*FILE*: <https://cypress-dashboard.staging.manabie.io:31600/run/$cypress_run_id | $file> \n:speech_balloon:*MESSAGE*: $message \n")
-#     full_report+="$report /n"
-#     ((limit--))
-#     full_report=$(echo ${full_report//$'\n'/'%0A'} | sed 's/"//g')
-#     echo "::set-output name=fail_count::$total_fails"
-#     echo "::set-output name=fail_report::$full_report"
-#   done
 }
 
 pushd "${REPORT_DIR}"
