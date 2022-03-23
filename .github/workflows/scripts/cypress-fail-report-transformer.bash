@@ -28,16 +28,17 @@ function generate_report(){
   local cypress_run_id=$(echo "${{ steps.run-integration.outputs.dashboardUrl }}" | sed 's:.*/::')
   echo $fail_results
   jq -c ".[]" ${fail_results} | while read -r i && [[ $limit != 0 ]]; do
-    title=$(echo "$i" | jq '.tests[0].title')
-    file=$(echo "$i" | jq '.fullFile')
-    message=$(echo "$i" | jq '.tests[0].err.message')
-    run_id=$(echo "$i" | jq '.uuid')
-    report=$(echo ":test_tube:*TEST*: $title \n:open_file_folder:*FILE*: <https://cypress-dashboard.staging.manabie.io:31600/run/$cypress_run_id | $file> \n:speech_balloon:*MESSAGE*: $message \n")
-    full_report+="$report /n"
-    ((limit--))
-    full_report=$(echo ${full_report//$'\n'/'%0A'} | sed 's/"//g')
-    echo "::set-output name=fail_count::$total_fails"
-    echo "::set-output name=fail_report::$full_report"
+    echo "$i ++++"
+#     title=$(echo "$i" | jq '.tests[0].title')
+#     file=$(echo "$i" | jq '.fullFile')
+#     message=$(echo "$i" | jq '.tests[0].err.message')
+#     run_id=$(echo "$i" | jq '.uuid')
+#     report=$(echo ":test_tube:*TEST*: $title \n:open_file_folder:*FILE*: <https://cypress-dashboard.staging.manabie.io:31600/run/$cypress_run_id | $file> \n:speech_balloon:*MESSAGE*: $message \n")
+#     full_report+="$report /n"
+#     ((limit--))
+#     full_report=$(echo ${full_report//$'\n'/'%0A'} | sed 's/"//g')
+#     echo "::set-output name=fail_count::$total_fails"
+#     echo "::set-output name=fail_report::$full_report"
   done
 }
 
