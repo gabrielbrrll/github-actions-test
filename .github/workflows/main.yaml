@@ -29,8 +29,6 @@ jobs:
       - name: Set variable
         id: set-variable
         run: |
-          #!/bin/bash
-
           set -eu
 
           # Use this env var to represent workspace dir on CI
