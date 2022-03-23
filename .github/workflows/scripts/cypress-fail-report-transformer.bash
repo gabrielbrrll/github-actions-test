@@ -27,6 +27,7 @@ function generate_report(){
   local fail_results=`cat index.json | jq -c '.results[].suites[] | select(.failures | length > 0)'`
   local cypress_run_id=$(echo "${{ steps.run-integration.outputs.dashboardUrl }}" | sed 's:.*/::')
   jq -c "$fail_results" index.json | while read -r i && [[ $limit != 0 ]]; do
+    ((limit--))
     title=$(echo "$i" | jq '.tests[0].title')
     file=$(echo "$i" | jq '.fullFile')
     message=$(echo "$i" | jq '.tests[0].err.message')
@@ -34,10 +35,6 @@ function generate_report(){
     report=$(echo ":test_tube:*TEST*: $title \n:open_file_folder:*FILE*: <https://cypress-dashboard.staging.manabie.io:31600/run/$cypress_run_id | $file> \n:speech_balloon:*MESSAGE*: $message \n
     n")
     full_report+=$report
-    if [[ $limit -eq 3 ]]; then
-      full_report+="/nShowing 3 out of ${total_fails} from Integration Test (${{ matrix.containers }})"
-    fi
-    ((limit--))
     full_report=$(echo ${full_report//$'\n'/'%0A'} | sed 's/"//g')
     echo $full_report
     echo "::set-output name=fail_count::$total_fails"
