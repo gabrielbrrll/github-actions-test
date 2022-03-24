@@ -38,6 +38,8 @@ function generate_report(){
     full_report+="$report"
     if [[ $limit -eq 0 ]]; then
       full_report+="Showing 3 test fails out of ${total_fails} test suite fails."
+    fi
+    if [[ $limit -eq 0 ]]; then
       break
     fi
     ((limit--))
