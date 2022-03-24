@@ -38,7 +38,6 @@ function generate_report(){
     full_report+="$report"
     if [[ $limit -eq 0 ]]; then
       full_report+="/nShowing 3 out of ${total_fails} test suite fails."
-      break
     fi
     ((limit--))
     full_report=$(echo ${full_report//$'\n'/'%0A'} | sed 's/"//g')
