@@ -37,7 +37,7 @@ function generate_report(){
     message=$(_jq '.err.message')
     report=$(echo ":test_tube:*TEST*: $title \n:open_file_folder:*FILE*: <https://cypress-dashboard.staging.manabie.io:31600/run/$cypress_run_id | $file> \n:speech_balloon:*MESSAGE*: $message \n\n")
     full_report+="$report"
-    sample=`cat ${REPORT_FILE} | jq -c '.results[].suites[] | select(.uuid == "bf8b81bf-968c-44e3-a157-55ba297d1146")'`
+    sample=`cat ${REPORT_FILE} | jq -c '.results[].suites[] | select(.uuid == "${parentId}")'`
     echo $sample
     if [[ $limit -eq 0 ]]; then
       break
