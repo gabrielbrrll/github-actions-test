@@ -30,14 +30,14 @@ function generate_report(){
       echo ${result} | base64 --decode | jq -r ${1}
     }
     title=$(_jq '.title')
-    parentId=$(_jq '.parentUUID')
+    parent_id=$(_jq '.parentUUID')
     file=""
     echo ${parentId}
     echo "${parentId} FILE PATHTHTHT"
     message=$(_jq '.err.message')
     report=$(echo ":test_tube:*TEST*: $title \n:open_file_folder:*FILE*: <https://cypress-dashboard.staging.manabie.io:31600/run/$cypress_run_id | $file> \n:speech_balloon:*MESSAGE*: $message \n\n")
     full_report+="$report"
-    sample=`cat ${REPORT_FILE} | jq -c '.results[].suites[] | select(.uuid == "296875be-ebcd-4028-83d9-acf72371a65c") | .fullFile'`
+    sample=`cat ${REPORT_FILE} | jq --arg parent_ref ${parent_ref} '.results[].suites[] | select(.uuid == ${parent_ref}) | .fullFile'`
     echo $sample
     if [[ $limit -eq 0 ]]; then
       break
