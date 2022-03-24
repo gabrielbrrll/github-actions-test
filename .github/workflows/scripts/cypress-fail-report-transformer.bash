@@ -34,8 +34,8 @@ function generate_report(){
     file=$(_jq '.fullFile')
     message=$(_jq '.tests[0].err.message')
     run_id=$(_jq '.uuid')
-    report=$(echo ":test_tube:*TEST*: $title \n:open_file_folder:*FILE*: <https://cypress-dashboard.staging.manabie.io:31600/run/$cypress_run_id | $file> \n:speech_balloon:*MESSAGE*: $message \n")
-    full_report+="$report /n"
+    report=$(echo ":test_tube:*TEST*: $title \n:open_file_folder:*FILE*: <https://cypress-dashboard.staging.manabie.io:31600/run/$cypress_run_id | $file> \n:speech_balloon:*MESSAGE*: $message \n\n")
+    full_report+="$report"
     if [[ $limit -eq 0 ]]; then
       break
     fi
