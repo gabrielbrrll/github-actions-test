@@ -37,17 +37,21 @@ function generate_report(){
     message=$(_jq '.err.message')
     report=$(echo ":test_tube:*TEST*: $title \n:open_file_folder:*FILE*: <https://cypress-dashboard.staging.manabie.io:31600/run/$cypress_run_id | $file> \n:speech_balloon:*MESSAGE*: $message \n\n")
     full_report+="$report"
-    full_report+="Showing 3 out of ${total_fails} test fails..."
+    
+    if [[ $limit -eq 1 ]]; then
+      full_report+="Showing 3 out of ${total_fails} test fails..."
+    fi
+    
+    full_report=$(echo ${full_report//$'\n'/'%0A'} | sed 's/"//g')
+    
+    echo "::set-output name=fail_count::$total_fails"
+    echo "::set-output name=fail_report::$full_report"
     
     if [[ $limit -eq 0 ]]; then
       break
     fi
     
     ((limit--))
-    full_report=$(echo ${full_report//$'\n'/'%0A'} | sed 's/"//g')
-    
-    echo "::set-output name=fail_count::$total_fails"
-    echo "::set-output name=fail_report::$full_report"
   done
 }
 
