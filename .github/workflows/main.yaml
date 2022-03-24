@@ -22,6 +22,7 @@ jobs:
       report: ${{ steps.set-variable.outputs.fail_report }}
       report_1: ${{ steps.set-variable.outputs.fail_report_1 }}
       report_2: ${{ steps.set-variable.outputs.fail_report_2 }}
+      dashboardUrl: "http://localhost:8080/run/3c61e3d372148c4e111de3b9ce097729"
 
     steps:
       - uses: actions/checkout@v2
@@ -30,10 +31,12 @@ jobs:
         id: set-variable
         run: |
           bash "${GITHUB_WORKSPACE}/.github/workflows/scripts/cypress-fail-report-transformer.bash"
+          
       - name: Check report
         id: check-report
         run: |
           echo "${{ steps.set-variable.outputs.fail_report }} - +++FAILURESSS"
+          
   slack-reporter:
     runs-on: ubuntu-latest
     needs:
