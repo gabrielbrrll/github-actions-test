@@ -22,9 +22,8 @@ touch "${REPORT_DIR}/${REPORT_FILE}"
 function generate_report(){
   local full_report=""
   local limit=3
-  local raw_report=$(echo ${REPORT_FILE})
-  local total_fails=`${raw_report} | jq ".stats.failures"`
-  local fail_results=`${raw_report} | jq -r '[.results[].suites[].tests[] | select(.fail == true)']`
+  local total_fails=`cat ${REPORT_FILE} | jq ".stats.failures"`
+  local fail_results=`cat ${REPORT_FILE} | jq -r '[.results[].suites[].tests[] | select(.fail == true)']`
   local cypress_run_id=$(echo "${{ steps.run-integration.outputs.dashboardUrl }}" | sed 's:.*/::')
   for result in $(echo "${fail_results}" | jq -r '.[] | @base64'); do
     _jq() {
@@ -38,6 +37,8 @@ function generate_report(){
     message=$(_jq '.err.message')
     report=$(echo ":test_tube:*TEST*: $title \n:open_file_folder:*FILE*: <https://cypress-dashboard.staging.manabie.io:31600/run/$cypress_run_id | $file> \n:speech_balloon:*MESSAGE*: $message \n\n")
     full_report+="$report"
+    sample=`cat ${REPORT_FILE} | jq -r '[.results[].suites[] | select(.uuid == ${parentId})' | .fullFile]`
+    echo $sample
     if [[ $limit -eq 0 ]]; then
       break
     fi
