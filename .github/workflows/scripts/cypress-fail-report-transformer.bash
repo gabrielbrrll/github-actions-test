@@ -22,7 +22,7 @@ touch "${REPORT_DIR}/${REPORT_FILE}"
 function generate_report(){
   local full_report=""
   local limit=3
-  local failures=`cat ${REPORT_FILE} | jq ".stats.failures"`
+  local test_fail_counter=0
   local total_fails=`cat ${REPORT_FILE} | jq ".stats.failures"`
   local fail_results=`cat $REPORT_FILE | jq -r '[.results[].suites[] | select(.failures | length > 0)']`
   local cypress_run_id=$(echo "${{ steps.run-integration.outputs.dashboardUrl }}" | sed 's:.*/::')
@@ -34,8 +34,10 @@ function generate_report(){
     file=$(_jq '.fullFile')
     message=$(_jq '.tests[0].err.message')
     run_id=$(_jq '.uuid')
+    test_suite_fail_count=$(_jq, 'tests[] | select(.fail == true) | length')
     report=$(echo ":test_tube:*TEST*: $title \n:open_file_folder:*FILE*: <https://cypress-dashboard.staging.manabie.io:31600/run/$cypress_run_id | $file> \n:speech_balloon:*MESSAGE*: $message \n\n")
     full_report+="$report"
+    test_fail_count+=
     if [[ $limit -eq 0 ]]; then
       full_report+="Showing 3 test fails out of ${total_fails} test suite fails."
     fi
@@ -44,7 +46,7 @@ function generate_report(){
     fi
     ((limit--))
     full_report=$(echo ${full_report//$'\n'/'%0A'} | sed 's/"//g')
-    echo "::set-output name=fail_count::$total_fails"
+    echo "::set-output name=fail_count::$test_fail_counter"
     echo "::set-output name=fail_report::$full_report"
   done
 }
