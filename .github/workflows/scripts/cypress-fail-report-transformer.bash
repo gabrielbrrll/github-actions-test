@@ -24,15 +24,15 @@ function generate_report(){
   local limit=3
   local total_fails=`cat ${REPORT_FILE} | jq ".stats.failures"`
   local fail_results=`cat $REPORT_FILE | jq -r '[.results[].suites[].tests[] | select(.fail == true)']`
-  echo $fail_results
+  echo "$fail_results -------FAIL RESULTS"
   local cypress_run_id=$(echo "${{ steps.run-integration.outputs.dashboardUrl }}" | sed 's:.*/::')
   for result in $(echo "${fail_results}" | jq -r '.[] | @base64'); do
     _jq() {
       echo ${result} | base64 --decode | jq -r ${1}
     }
-    title=$(_jq '.tests[0].title')
+    title=$(_jq '.title')
     file=$(_jq '.fullFile')
-    message=$(_jq '.tests[0].err.message')
+    message=$(_jq '.err.message')
     report=$(echo ":test_tube:*TEST*: $title \n:open_file_folder:*FILE*: <https://cypress-dashboard.staging.manabie.io:31600/run/$cypress_run_id | $file> \n:speech_balloon:*MESSAGE*: $message \n\n")
     full_report+="$report"
     if [[ $limit -eq 0 ]]; then
