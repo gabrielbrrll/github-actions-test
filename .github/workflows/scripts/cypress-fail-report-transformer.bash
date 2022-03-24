@@ -22,7 +22,7 @@ touch "${REPORT_DIR}/${REPORT_FILE}"
 function generate_report(){
   local full_report=""
   local limit=3
-  local total_fails=`cat ${REPORT_FILE} | jq '.results[].suites[].tests[] | select(.fail) | length'`
+  local total_fails=`cat ${REPORT_FILE} | jq '.results[].suites[].tests[] | select(.fail == true) | length'`
   local fail_results=`cat ${REPORT_FILE} | jq -r '[.results[].suites[].tests[] | select(.fail == true)']`
   local cypress_run_id=$(echo "${{ steps.run-integration.outputs.dashboardUrl }}" | sed 's:.*/::')
   for result in $(echo "${fail_results}" | jq -r '.[] | @base64'); do
