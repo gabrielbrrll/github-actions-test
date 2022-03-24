@@ -69,7 +69,7 @@ jobs:
                           "type": "section",
                           "text": {
                           "type": "mrkdwn",
-                          "text": ":warning: *Oops!* Found ${{ needs.log-variable.outputs.fail_count }} test fails in INTEGRATION TEST (${{ matrix.containers }}) in pull request workflow. :pleading_face:"
+                          "text": ":warning: *Oops!* Found ${{ needs.log-variable.outputs.failures }} test fails in INTEGRATION TEST (${{ matrix.containers }}) in pull request workflow. :pleading_face:"
                           }
                       },
                       {
@@ -101,7 +101,7 @@ jobs:
                                   "elements": [
                                       {
                                           "type": "mrkdwn",
-                                          "text": "${{ needs.log-variable.outputs.fail_report }}"
+                                          "text": "${{ needs.log-variable.outputs.report }}"
                                       }
                                   ]
                               },
