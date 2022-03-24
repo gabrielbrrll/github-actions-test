@@ -22,7 +22,7 @@ jobs:
       report: ${{ steps.set-variable.outputs.fail_report }}
       report_1: ${{ steps.set-variable.outputs.fail_report_1 }}
       report_2: ${{ steps.set-variable.outputs.fail_report_2 }}
-      dashboardUrl: "http://localhost:8080/run/3c61e3d372148c4e111de3b9ce097729"
+      dashboardUrl: ""
 
     steps:
       - uses: actions/checkout@v2
@@ -40,9 +40,9 @@ jobs:
       - name: Set variable
         id: set-variable
         run: |
-          bash "${GITHUB_WORKSPACE}/.github/workflows/scripts/cypress-fail-report-transformer.bash"
+          bash "${GITHUB_WORKSPACE}/.github/workflows/scripts/cypress-fail-report-transformer.bash" $cypress_link
         env:
-          cypress_link: ${{ steps.cypress.outputs.cypress_url }}
+          cypress_link: "http://localhost:8080/run/3c61e3d372148c4e111de3b9ce097729"
           
       - name: Check report
         id: check-report
