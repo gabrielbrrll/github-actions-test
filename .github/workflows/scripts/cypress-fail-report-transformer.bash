@@ -34,13 +34,8 @@ function generate_report(){
     file=$(_jq '.fullFile')
     message=$(_jq '.tests[0].err.message')
     run_id=$(_jq '.uuid')
-    test_suite_fail_count=$(_jq, 'tests[] | select(.fail == true) | length')
     report=$(echo ":test_tube:*TEST*: $title \n:open_file_folder:*FILE*: <https://cypress-dashboard.staging.manabie.io:31600/run/$cypress_run_id | $file> \n:speech_balloon:*MESSAGE*: $message \n\n")
     full_report+="$report"
-    test_fail_count+=test_suite_fail_count
-    if [[ $limit -eq 0 ]]; then
-      full_report+="Showing 3 test fails out of ${total_fails} test suite fails."
-    fi
     if [[ $limit -eq 0 ]]; then
       break
     fi
