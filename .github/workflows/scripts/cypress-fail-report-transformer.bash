@@ -36,9 +36,8 @@ function generate_report(){
     run_id=$(_jq '.uuid')
     report=$(echo ":test_tube:*TEST*: $title \n:open_file_folder:*FILE*: <https://cypress-dashboard.staging.manabie.io:31600/run/$cypress_run_id | $file> \n:speech_balloon:*MESSAGE*: $message \n\n")
     full_report+="$report"
+    full_report+="/nShowing 3 out of ${total_fails} test suite fails."
     if [[ $limit -eq 0 ]]; then
-      echo $limit
-      full_report+="/nShowing 3 out of ${total_fails} test suite fails."
       break
     fi
     ((limit--))
