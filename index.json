@@ -4,7 +4,7 @@
     "tests": 16,
     "passes": 1,
     "pending": 0,
-    "failures": 2,
+    "failures": 4,
     "start": "2022-03-21T10:30:57.237Z",
     "end": "2022-03-21T10:37:40.657Z",
     "duration": 104499,
@@ -251,12 +251,12 @@
           ],
           "suites": [],
           "passes": [],
-          "failures": [],
-          "pending": [],
-          "skipped": [
+          "failures": [
             "bf210caf-2c2b-4dd0-a6f2-06c5cc235b8a",
             "ed7765e2-00bd-444b-b9f5-0187c4057519"
           ],
+          "pending": [],
+          "skipped": [],
           "duration": 1207,
           "root": false,
           "rootEmpty": false,
@@ -314,11 +314,9 @@
           ],
           "suites": [],
           "passes": [],
-          "failures": [],
+          "failures": ["879f4549-0065-45c3-8e01-179c18bf5323"],
           "pending": [],
-          "skipped": [
-            "879f4549-0065-45c3-8e01-179c18bf5323"
-          ],
+          "skipped": [],
           "duration": 910,
           "root": false,
           "rootEmpty": false,
