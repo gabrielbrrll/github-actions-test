@@ -25,6 +25,8 @@ function generate_report(){
   local test_fail_counter=0
   local total_fails=`cat ${REPORT_FILE} | jq ".stats.failures"`
   local fail_results=`cat $REPORT_FILE | jq -r '[.results[].suites[] | select(.failures | length > 0)']`
+  local fail_test_results=`cat $REPORT_FILE | jq -r '[.results[].suites[].tests[] | select(.fail == true)']`
+  echo $fail_test_results
   local cypress_run_id=$(echo "${{ steps.run-integration.outputs.dashboardUrl }}" | sed 's:.*/::')
   for result in $(echo "${fail_results}" | jq -r '.[] | @base64'); do
     _jq() {
