@@ -26,11 +26,23 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      
+      - name: Set cypress
+        id: cypress
+        run: |
+          echo "cypress_dashboard_url=http://localhost:8080/run/3c61e3d372148c4e111de3b9ce097729" >> $GITHUB_ENV
+      
+      - name: Set env
+        id: set-env
+        run: |
+          echo "cypress_url=${{ steps.cypress.outputs.cypress_dashboard_url }}" >> $GITHUB_ENV
 
       - name: Set variable
         id: set-variable
         run: |
           bash "${GITHUB_WORKSPACE}/.github/workflows/scripts/cypress-fail-report-transformer.bash"
+        env:
+          cypress_link: ${{ steps.cypress.outputs.cypress_url }}
           
       - name: Check report
         id: check-report
