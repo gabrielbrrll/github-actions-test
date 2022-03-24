@@ -24,7 +24,6 @@ function generate_report(){
   local limit=3
   local total_fails=`cat ${REPORT_FILE} | jq ".stats.failures"`
   local fail_results=`cat $REPORT_FILE | jq -r '[.results[].suites[].tests[] | select(.fail == true)']`
-  echo "$fail_results -------FAIL RESULTS"
   local cypress_run_id=$(echo "${{ steps.run-integration.outputs.dashboardUrl }}" | sed 's:.*/::')
   for result in $(echo "${fail_results}" | jq -r '.[] | @base64'); do
     _jq() {
@@ -32,7 +31,7 @@ function generate_report(){
     }
     title=$(_jq '.title')
     parentId=$(_jq '.parentUUID')
-    file=`cat $REPORT_FILE | jq -c '.results[].suites[] | select(.uuid == ${parentId})'`
+    echo ${parentId}
     echo "$file FILE PATHTHTHT"
     message=$(_jq '.err.message')
     report=$(echo ":test_tube:*TEST*: $title \n:open_file_folder:*FILE*: <https://cypress-dashboard.staging.manabie.io:31600/run/$cypress_run_id | $file> \n:speech_balloon:*MESSAGE*: $message \n\n")
