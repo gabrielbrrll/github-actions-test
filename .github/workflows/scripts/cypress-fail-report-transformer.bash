@@ -37,6 +37,7 @@ function generate_report(){
     report=$(echo ":test_tube:*TEST*: $title \n:open_file_folder:*FILE*: <https://cypress-dashboard.staging.manabie.io:31600/run/$cypress_run_id | $file> \n:speech_balloon:*MESSAGE*: $message \n\n")
     full_report+="$report"
     if [[ $limit -eq 0 ]]; then
+      full_report+="/nShowing 3 out of ${total_fails} test suite fails."
       break
     fi
     ((limit--))
