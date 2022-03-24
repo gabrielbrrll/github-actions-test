@@ -12,6 +12,8 @@ else
   BASE_DIR="${GITHUB_WORKSPACE}"
 fi
 
+echo "$cypress_link cypress link"
+
 REPORT_DIR="${BASE_DIR}"
 REPORT_FILE="index.json"
 
