@@ -66,7 +66,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": ":warning: [PLEASE IGNORE, TESTING] *Oops!* Found ${{ needs.log-variable.outputs.failures }} integration test fail(s) on Cypress. :pleading_face:"
+                    "text": ":warning: *Oops!* Found ${{ needs.log-variable.outputs.failures }} integration test fail(s) on Cypress. :pleading_face:"
                   }
                 },
                 {
