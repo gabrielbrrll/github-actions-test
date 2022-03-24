@@ -37,9 +37,9 @@ function generate_report(){
     report=$(echo ":test_tube:*TEST*: $title \n:open_file_folder:*FILE*: <https://cypress-dashboard.staging.manabie.io:31600/run/$cypress_run_id | $file> \n:speech_balloon:*MESSAGE*: $message \n")
     full_report+="$report /n"
     ((limit--))
-    full_report=$(echo ${full_report//$'\n'/'%0A'} | sed 's/"//g')
-    echo "::set-output name=fail_count::$total_fails"
-    echo "::set-output name=fail_report::$full_report"
+#     full_report=$(echo ${full_report//$'\n'/'%0A'} | sed 's/"//g')
+#     echo "::set-output name=fail_count::$total_fails"
+#     echo "::set-output name=fail_report::$full_report"
     echo $full_report
   done
 }
