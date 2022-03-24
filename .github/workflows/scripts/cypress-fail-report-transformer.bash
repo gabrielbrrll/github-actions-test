@@ -26,7 +26,7 @@ function generate_report(){
   local limit=3
   local fail_results=`cat ${REPORT_FILE} | jq -r '[.results[].suites[].tests[] | select(.fail)']`
   local total_fails=$(echo "${fail_results}" | jq '. | length')
-  local cypress_run_id=$(echo "${{ steps.log-variable.outputs.dashboardUrl }}" | sed 's:.*/::')
+  local cypress_run_id=$(echo "$cypress_link" | sed 's:.*/::')
   echo ${{ steps.log-variable.outputs.dashboardUrl }}
   
   for result in $(echo "${fail_results}" | jq -r '.[] | @base64'); do
