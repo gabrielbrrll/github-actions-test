@@ -131,8 +131,8 @@
               "context": null,
               "code": "// register this scenario with the cucumber data collector\n// but don't run it\n// Tell mocha this is a skipped test so it also shows correctly in Cypress\nconst state = window.testState;\ncy.then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() => state.onFinishScenario(scenario))\n  // eslint-disable-next-line func-names\n  .then(function () {\n    return this.skip();\n  });",
               "err": {
-                "message": "CypressError: sync skip; aborting execution",
-                "estack": "[object Object]\nFrom Your Spec Code:\n    at Context.eval (http://localhost:3001/__cypress/tests?p=cypress/integration/cms/chapter_create.feature:21621:10)",
+                "message": null,
+                "estack": null,
                 "diff": null
               },
               "uuid": "cbd526de-c4c6-4bd2-acaf-d3dfc9487424",
@@ -148,7 +148,7 @@
               "state": "pending",
               "speed": null,
               "pass": false,
-              "fail": false,
+              "fail": true,
               "pending": false,
               "context": null,
               "code": "// register this scenario with the cucumber data collector\n// but don't run it\n// Tell mocha this is a skipped test so it also shows correctly in Cypress\nconst state = window.testState;\ncy.then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() => state.onFinishScenario(scenario))\n  // eslint-disable-next-line func-names\n  .then(function () {\n    return this.skip();\n  });",
@@ -165,12 +165,11 @@
           ],
           "suites": [],
           "passes": [],
-          "failures": ["9b551d02-bab8-47f6-a063-e8e8c6df097a"],
+          "failures": ["2b93915f-12f7-40f4-8d59-776625a5e94f"],
           "pending": [],
           "skipped": [
             "9b551d02-bab8-47f6-a063-e8e8c6df097a",
-            "cbd526de-c4c6-4bd2-acaf-d3dfc9487424",
-            "2b93915f-12f7-40f4-8d59-776625a5e94f"
+            "cbd526de-c4c6-4bd2-acaf-d3dfc9487424"
           ],
           "duration": 1870,
           "root": false,
