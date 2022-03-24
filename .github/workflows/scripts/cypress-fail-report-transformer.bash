@@ -31,6 +31,7 @@ function generate_report(){
     }
     title=$(_jq '.title')
     parentId=$(_jq '.parentUUID')
+    file=""
     echo ${parentId}
     echo "${parentId} FILE PATHTHTHT"
     message=$(_jq '.err.message')
