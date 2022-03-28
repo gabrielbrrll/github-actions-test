@@ -71,7 +71,7 @@ jobs:
             local total_fails=$(echo "${fail_results}" | jq '. | length')
             local cypress_run_id=$(echo "${cypress_link}" | sed 's:.*/::')
 
-            for result in $(echo "${fail_results}" | jq -r '.[] | @base64'); do
+            for result in $(echo -E "${fail_results}" | jq -r '.[] | @base64'); do
               _jq() {
                 echo ${result} | base64 --decode | jq -r ${1}
               }
