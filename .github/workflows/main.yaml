@@ -99,25 +99,6 @@ jobs:
         run: |
           echo "${{ steps.set-variable.outputs.fail_report }} - +++FAILURESSS"
           
-  slack-reporter:
-    runs-on: ubuntu-latest
-    needs:
-      - log-variable
-
-    steps:
-      - uses: actions/checkout@v2
-    
-      - name: Check variable
-        id: check-variable
-        run: |
-          echo $PWD
-          echo "${{ needs.log-variable.outputs.failures }} - +++FAILURESSS"
-          echo "${{ needs.log-variable.outputs.report }} - +++REPORT"
-          echo "${{ needs.log-variable.outputs.report_1 }} - +++REPORT 1"
-          echo "${{ needs.log-variable.outputs.report_2 }} - +++REPORT 2"
-          pull_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
-          echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-          echo "::set-output name=pull-request-number::"${pull_number}""
       - name: Send slack notication report for failed integration tests
         id: slack-notif-failed-integration-tests
         uses: slackapi/slack-github-action@v1.18.0
@@ -133,7 +114,7 @@ jobs:
                           "type": "section",
                           "text": {
                           "type": "mrkdwn",
-                          "text": ":warning: *Oops!* Found ${{ needs.log-variable.outputs.failures }} test fails in INTEGRATION TEST (${{ matrix.containers }}) in pull request workflow. :pleading_face:"
+                          "text": ":warning: *Oops!* Found ${{ steps.set-variable.outputs.fail_count }} test fails in INTEGRATION TEST (${{ matrix.containers }}) in pull request workflow. :pleading_face:"
                           }
                       },
                       {
@@ -165,7 +146,7 @@ jobs:
                                   "elements": [
                                       {
                                           "type": "mrkdwn",
-                                          "text": "${{ needs.log-variable.outputs.report }}"
+                                          "text": "${{ steps.set-variable.outputs.fail_report }}"
                                       }
                                   ]
                               },
