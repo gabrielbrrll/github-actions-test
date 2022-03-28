@@ -46,6 +46,7 @@ jobs:
 
           # Use this env var to represent workspace dir on CI
           GITHUB_WORKSPACE=${GITHUB_WORKSPACE:-}
+          echo "HELLEOELEOEOOE"
 
           # use this instead to represent workspace dir for local environment
           if [ "${GITHUB_WORKSPACE}" == "" ]; then
