@@ -165,9 +165,7 @@ jobs:
                                   "elements": [
                                       {
                                           "type": "mrkdwn",
-                                          "text": ":test_tube:*TEST*: User can duplicate a book \n:open_file_folder:*FILE*: <https://cypress-dashboard.staging.***.io:31600/run/570c7c8f413d2860c3826d8fa6597944 | cypress/integration/cms/book_duplicate.feature> \n:speech_balloon:*MESSAGE*: CypressError: Timed out retrying after 30000ms: `cy.wait()` timed out waiting `30000ms` for the 1st response to the route: `eureka.v1.CourseModifierService/DuplicateBook`. No response ever occurred.
-  
-  https://on.cypress.io/wait \n\n"
+                                          "text": ":test_tube:*TEST*: User can duplicate a book \n:open_file_folder:*FILE*: <https://cypress-dashboard.staging.***.io:31600/run/570c7c8f413d2860c3826d8fa6597944 | cypress/integration/cms/book_duplicate.feature> \n:speech_balloon:*MESSAGE*: CypressError: Timed out retrying after 30000ms: `cy.wait()` timed out waiting `30000ms` for the 1st response to the route: `eureka.v1.CourseModifierService/DuplicateBook`. No response ever occurred. https://on.cypress.io/wait \n\n"
                                       }
                                   ]
                               },
