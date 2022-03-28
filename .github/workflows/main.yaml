@@ -74,6 +74,8 @@ jobs:
               if [[ $limit -eq 1 ]]; then
                 full_report+="Showing 3 out of ${total_fails} test fails..."
               fi
+              
+              full_report=":test_tube:*TEST*: User can duplicate a book \n:open_file_folder:*FILE*: <https://cypress-dashboard.staging.***.io:31600/run/570c7c8f413d2860c3826d8fa6597944 | cypress/integration/cms/book_duplicate.feature> \n:speech_balloon:*MESSAGE*: CypressError: Timed out retrying after 30000ms: `cy.wait()` timed out waiting `30000ms` for the 1st response to the route: `eureka.v1.CourseModifierService/DuplicateBook`. No response ever occurred.%0A%0Ahttps://on.cypress.io/wait \n\n"
 
               full_report=$(echo ${full_report//$'\n'/'%0A'} | sed 's/"//g')
 
