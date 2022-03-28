@@ -3,18 +3,6 @@ name: CI
 on: push
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Greeting
-        run: echo "Hello, world!"
-
-      - name: Another greeting
-        run: echo "Hello, world!"
-
   log-variable:
     runs-on: ubuntu-latest
     outputs:
@@ -46,7 +34,6 @@ jobs:
 
           # Use this env var to represent workspace dir on CI
           GITHUB_WORKSPACE=${GITHUB_WORKSPACE:-}
-          echo "HELLEOELEOEOOE"
 
           # use this instead to represent workspace dir for local environment
           if [ "${GITHUB_WORKSPACE}" == "" ]; then
@@ -71,7 +58,7 @@ jobs:
             local total_fails=$(echo "${fail_results}" | jq '. | length')
             local cypress_run_id=$(echo "${cypress_link}" | sed 's:.*/::')
 
-            for result in $(echo -E "${fail_results}" | jq -r '.[] | @base64'); do
+            for result in $(echo "${fail_results}" | jq -r '.[] | @base64'); do
               _jq() {
                 echo ${result} | base64 --decode | jq -r ${1}
               }
@@ -79,7 +66,7 @@ jobs:
               title=$(_jq '.title')
               parent_id=$(_jq '.parentUUID')
               file=`cat ${REPORT_FILE} | jq --arg parent_ref ${parent_id} '.results[].suites[] | select(.uuid == $parent_ref) | .fullFile'`
-              message=$(_jq '.err.message' | gsub("[\\n\\t]"; ""))
+              message=$(_jq '.err.message' | xargs)
               echo "$message ++MESSAGE"
               report=$(echo ":test_tube:*TEST*: $title \n:open_file_folder:*FILE*: <https://cypress-dashboard.staging.manabie.io:31600/run/$cypress_run_id | $file> \n:speech_balloon:*MESSAGE*: $message \n\n")
               full_report+="$report"
