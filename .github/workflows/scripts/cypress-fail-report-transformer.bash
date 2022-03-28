@@ -36,7 +36,7 @@ function generate_report(){
     title=$(_jq '.title')
     parent_id=$(_jq '.parentUUID')
     file=`cat ${REPORT_FILE} | jq --arg parent_ref ${parent_id} '.results[].suites[] | select(.uuid == $parent_ref) | .fullFile'`
-    message=$(_jq '.err.message' | xargs)
+    message=$(_jq '.err.message')
     report=$(echo ":test_tube:*TEST*: $title \n:open_file_folder:*FILE*: <https://cypress-dashboard.staging.manabie.io:31600/run/$cypress_run_id | $file> \n:speech_balloon:*MESSAGE*: $message \n\n")
     full_report+="$report"
     
